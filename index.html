@@ -270,18 +270,18 @@ footer {
 
 .intro-box,
 .outro-box {
-    height: 240px;              /* ⭐ 이미지와 동일 */
+    height: 100%;              /* ⭐ 이미지 높이를 따라감 */
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* 세로 가운데 정렬 */
+    justify-content: center;
 }
 
-    .intro-wrap,
+.intro-wrap,
 .outro-wrap {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 25px;
-    align-items: stretch; /* ⭐ 이미지가 박스 높이에 맞춰짐 */
+    align-items: stretch;   /* ⭐ 핵심 */
     margin-bottom: 40px;
 }
 /* 모바일 */
@@ -291,10 +291,13 @@ footer {
         height: auto;   /* 모바일에서는 내용 기준 */
     }
 
-    .intro-wrap img,
-    .outro-wrap img {
-        height: 200px;
-    }
+.intro-wrap img,
+.outro-wrap img {
+    width: 100%;
+    height: 240px;        /* 기준 높이 */
+    object-fit: cover;
+    border-radius: 14px;
+}
 }
     
     ///////
@@ -563,6 +566,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
