@@ -259,10 +259,10 @@ footer {
 
     //////////
 
-    .intro-wrap,
+.intro-wrap,
 .outro-wrap {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr; /* 양쪽 반씩 */
     gap: 25px;
     align-items: center;
     margin-bottom: 40px;
@@ -270,28 +270,32 @@ footer {
 
 .intro-box,
 .outro-box {
-    height: 240px;              /* ⭐ 이미지와 동일 */
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* 세로 가운데 정렬 */
+    justify-content: center; /* 세로 가운데 정렬 */
 }
 .intro-wrap img,
 .outro-wrap img {
-    max-width: 100%;      /* 가로는 박스 안에서 줄이기 */
-    max-height: 240px;    /* 박스 최대 높이 */
-    height: auto;         /* 비율 유지 */
+    width: 100%;        /* 가로 100% */
+    max-width: 100%;
+    height: auto;       /* 비율 유지 */
+    max-height: 240px;  /* 최대 높이 제한 */
+    object-fit: contain; /* 이미지 박스 안에 맞추기 */
     border-radius: 14px;
     display: block;
-    object-fit: contain;  /* cover → contain으로 변경: 박스 안에 이미지 전체 표시 */
 }
 /* 모바일 */
 @media (max-width: 700px) {
+    .intro-wrap,
+    .outro-wrap {
+        grid-template-columns: 1fr; /* 세로로 쌓기 */
+    }
+
     .intro-wrap img,
     .outro-wrap img {
         max-height: 180px;
     }
 }
-    
     ///////
     
 </style>
@@ -558,6 +562,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
