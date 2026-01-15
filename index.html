@@ -286,13 +286,10 @@ footer {
 
     
 /* 이미지 박스 안에서 잘리게 */
-.intro-wrap img,
-    width: auto;       /* 가로 자동 */
-    height: 100%;      /* 높이를 박스에 맞춤 */
-    max-width: 100%;   /* 가로가 박스보다 길면 잘림 */
-    object-fit: cover; /* 비율 유지하면서 박스 안에서 자름 */
-    border-radius: 14px;
-    display: block;
+.intro-wrap img {
+    width: 400px;   /* 원하는 가로 길이 */
+    height: 220px;  /* 원하는 세로 높이 */
+    object-fit: cover; /* 비율 유지하면서 박스 안에서 잘림 */
 }
 
 .outro-wrap img {
@@ -581,6 +578,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
