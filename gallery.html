@@ -276,24 +276,16 @@ footer {
     justify-content: center;    /* 세로 가운데 정렬 */
 }
 
-    .intro-wrap,
-.outro-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 25px;
-    align-items: stretch; /* ⭐ 이미지가 박스 높이에 맞춰짐 */
-    margin-bottom: 40px;
-}
 /* 모바일 */
 @media (max-width: 700px) {
-    .intro-box,
-    .outro-box {
-        height: auto;   /* 모바일에서는 내용 기준 */
-    }
-
     .intro-wrap img,
     .outro-wrap img {
-        height: 200px;
+        height: 180px;
+    }
+
+    .intro-box,
+    .outro-box {
+        height: auto;
     }
 }
     
@@ -563,6 +555,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
