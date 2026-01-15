@@ -184,24 +184,25 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-
 /*배너관련*/
 .banner {
-    background-color: #ffcc00; /* 기존 노란색 */
+    height: 400px;                     /* 배너 높이 */
+    background-image: url("images/banner.jpg");
+    background-size: contain;          /* 이미지 잘림 방지 */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffcc00;         /* 이미지 빈 공간 노란색 */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 20px 0;
+    color: #333;
 }
 
-/* 핵심 */
-.banner-img {
-    max-height: 400px;   /* 높이 제한 */
-    width: auto;         /* 가로 비율 자동 */
-    max-width: 100%;     /* 화면 넘침 방지 */
-    height: auto;
-    display: inline-block;
-}
-    /*배너관련*/
-
+/*배너관련*/
 
     
 </style>
@@ -212,7 +213,6 @@ footer {
 <header class="banner">
     <h1>코딩썬샤인 ☀️</h1>
     <p>즐겁게 배우는 코딩 & 메이커 동호회</p>
-    <img src="images/banner.jpg" alt="코딩썬샤인 배너" class="banner-img">
 </header>
 
 <nav>
@@ -428,6 +428,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
