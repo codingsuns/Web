@@ -311,6 +311,20 @@ footer {
 }
     
 
+.outro-wrap {
+    display: flex;
+    gap: 25px;
+    align-items: stretch; /* 글 박스 높이에 맞춤 */
+}
+
+.outro-wrap img {
+    height: 100%;       /* 글 박스 높이 기준 */
+    width: auto;        /* 비율 유지 */
+    object-fit: cover;  /* 넘치면 잘림 */
+    flex-shrink: 0;     /* 축소 방지 */
+    border-radius: 14px;
+}
+    
     
 </style>
 </head>
@@ -575,6 +589,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
