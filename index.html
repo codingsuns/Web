@@ -267,54 +267,112 @@ footer {
 
 
 /* 글 박스 */
+/* 글 박스 */
 .intro-box,
 .outro-box {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 가운데 정렬 */
-    height: 240px;           /* 이미지 높이에 맞춤 */
+    justify-content: center;
+    padding: 12px;      /* 패딩 줄임 */
+    height: 200px;       /* 높이 200px */
+    overflow: hidden;    /* 글이 넘치면 숨김 */
+    font-size: 14px;     /* 글자 크기 조금 줄임 */
+    line-height: 1.4;    /* 줄간격 줄임 */
 }
 
-    .intro-wrap,
+.intro-wrap,
 .outro-wrap {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 25px;
-    align-items: stretch; /* ⭐ 이미지가 박스 높이에 맞춰짐 */
     margin-bottom: 40px;
 }
 
-    
-/* 이미지 박스 안에서 잘리게 */
-.intro-wrap img {
-    width: 400px;   /* 원하는 가로 길이 */
-    height: 600px;  /* 원하는 세로 높이 */
-    object-fit: cover; /* 비율 유지하면서 박스 안에서 잘림 */
-}
 
+    
+/* 이미지 높이 고정 */
+.intro-wrap img,
 .outro-wrap img {
-    width: 400px;   /* 원하는 가로 길이 */
-    height: 600px;  /* 원하는 세로 높이 */
+    width: auto;        /* 가로 비율 유지 */
+    height: 200px;      /* 글 박스와 동일 높이 */
     object-fit: cover;
+    border-radius: 14px;
 }
 
-    
+
+/* 인트로/아웃트로 박스 전체 */
+.intro-box-wrapper,
+.outro-box-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    /* 은은한 노란색 배경 */
+    background: linear-gradient(135deg, rgba(255, 236, 179, 0.3), rgba(255,255,255,0.6));
+}
+
+/* 이미지 */
+.intro-box-wrapper img,
+.outro-box-wrapper img {
+    width: 250px;   
+    height: 250px;  
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* 글 박스 */
+.intro-text,
+.outro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 모바일 대응 */
 @media (max-width: 700px) {
-    .intro-wrap,
-    .outro-wrap {
-        grid-template-columns: 1fr; /* 세로로 쌓기 */
+    .intro-box-wrapper,
+    .outro-box-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .intro-wrap img,
-    .outro-wrap img,
-    .intro-box,
-    .outro-box {
-        height: auto;   /* 모바일에서는 자연스럽게 */
+    .intro-box-wrapper img,
+    .outro-box-wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+
+    .intro-text,
+    .outro-text {
+        font-size: 14px;
+        line-height: 1.5;
     }
 }
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 </head>
 
@@ -340,28 +398,22 @@ footer {
 <section id="about">
     <h2>동호회 소개</h2>
 
-    <!-- 소개 이미지 2장 -->
-<div class="intro-wrap">
-
-    <img src="images/about_activity1.jpg" alt="코딩썬샤인 인트로 이미지">
-
-    <div class="intro-box">
-        <h3>☀️ 코딩썬샤인은 이런 곳이에요</h3>
-        <p>
-            <strong>코딩썬샤인</strong>은 코딩, 로봇, 3D 프린팅을 중심으로<br>
-            <strong>배우는 즐거움과 만드는 경험</strong>을 나누는 메이커 동호회입니다.
-
-            전공 여부와 상관없이 누구나 참여할 수 있으며,<br>
-            AI 도구를 활용한 모델링과 코딩 학습으로<br>
-            아이디어를 <strong>빠르게 현실로 만드는 경험</strong>을 함께합니다.
-        </p>
+    <!-- 인트로 박스 -->
+    <div class="intro-box-wrapper">
+        <img src="images/about_activity1.jpg" alt="코딩썬샤인 인트로 이미지">
+        <div class="intro-text">
+            <h3>☀️ 코딩썬샤인은 이런 곳이에요</h3>
+            <p>
+                <strong>코딩썬샤인</strong>은 코딩, 로봇, 3D 프린팅을 중심으로
+                <strong>배우는 즐거움과 만드는 경험</strong>을 나누는 메이커 동호회입니다.
+            </p>
+        </div>
     </div>
-</div>
 
-
-    
-
-<h3>🔧 주요 활동 영역</h3>
+    <h3>🔧 주요 활동 영역</h3>
+    <div class="activity-grid">
+        <!-- 활동 카드 생략 (기존 코드 그대로) -->
+    </div>
 
 <div class="activity-grid">
 
@@ -404,35 +456,18 @@ footer {
 
 </div>
 
-<div class="outro-wrap">
-
-    <img src="images/about_activity2.jpg" alt="코딩썬샤인 아웃트로 이미지">
-
-<div class="outro-box">
-    <div class="outro-grid">
-        <div class="outro-item">
-            🌱 결과보다 <strong>창작의 과정과 배움</strong>
-        </div>
-
-        <div class="outro-item">
-            🧩 3D 모델링 · 코딩 · 로봇 제작의 첫 경험
-        </div>
-
-        <div class="outro-item">
-            🚀 시행착오까지 포함한 <strong>진짜 메이커 활동</strong>
-        </div>
-
-        <div class="outro-item highlight">
-            혼자보다 함께,  
-            한 걸음씩 성장합니다 ☀️
+<p><br>
+  <div class="outro-box-wrapper">
+        <img src="images/about_activity2.jpg" alt="코딩썬샤인 아웃트로 이미지">
+        <div class="outro-text">
+            <p>🌱 결과보다 <strong>창작의 과정과 배움</strong></p>
+            <p>🧩 3D 모델링 · 코딩 · 로봇 제작의 첫 경험</p>
+            <p>🚀 시행착오까지 포함한 <strong>진짜 메이커 활동</strong></p>
+            <p>혼자보다 함께, 한 걸음씩 성장합니다 ☀️</p>
         </div>
     </div>
-</div>
-
-
-</div>
 </section>
-
+</p>
 
 
 <section id="members">
@@ -578,6 +613,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
