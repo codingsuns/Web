@@ -184,6 +184,81 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.activity-card {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.activity-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.activity-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* 모바일 */
+@media (max-width: 700px) {
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/////////////////////
+    .activity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.activity-card {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.activity-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.activity-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* 모바일 */
+@media (max-width: 700px) {
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/////////////////
+
+
+
     
 </style>
 </head>
@@ -230,35 +305,48 @@ footer {
 
 <h3>🔧 주요 활동 영역</h3>
 
-<p>
-    🖨️ <strong>3D 프린팅 & 모델링</strong><br>
-    틴커캐드, Fusion 360은 물론  
-    <strong>AI 기반 모델링 도구</strong>를 활용해  
-    아이디어를 빠르게 설계하고  
-    실제 3D 프린터 출력·조립·후가공까지 경험합니다.
-</p>
+<div class="activity-grid">
 
-<p>
-    💻 <strong>코딩 학습</strong><br>
-    파이썬, 블록 코딩, 웹 제작(HTML/CSS) 등  
-    <strong>실습 중심의 스터디</strong>를 통해  
-    코딩의 기초 개념과 문제 해결 능력을 키웁니다.
-</p>
+    <div class="activity-card">
+        <h4>🖨️ 3D 프린팅 & 모델링</h4>
+        <p>
+            틴커캐드, Fusion 360과 함께  
+            <strong>AI 기반 모델링 도구</strong>를 활용해  
+            아이디어를 빠르게 설계하고  
+            실제 3D 프린터 출력·조립·후가공까지 경험합니다.
+        </p>
+    </div>
 
-<p>
-    🤖 <strong>로봇 & 하드웨어</strong><br>
-    아두이노, 라즈베리파이, 로봇 키트를 활용해  
-    센서 제어, 자동화, 간단한 로봇 제작 프로젝트를 진행합니다.
-</p>
+    <div class="activity-card">
+        <h4>💻 코딩 학습</h4>
+        <p>
+            파이썬, 블록 코딩, 웹 제작(HTML/CSS)을 중심으로  
+            실습 위주의 스터디를 통해  
+            코딩의 기초 개념과 문제 해결 능력을 키웁니다.
+        </p>
+    </div>
 
-<p>
-    🧠 <strong>AI 활용 & 교육·봉사 활동</strong><br>
-    AI를 활용한 <strong>모델링, 코딩 보조, 아이디어 구체화</strong>를 배우고  
-    지역 아동·청소년 및 주민을 대상으로  
-    메이커·코딩 체험 교육과 재능 봉사를 실천합니다.
-</p>
+    <div class="activity-card">
+        <h4>🤖 로봇 & 하드웨어</h4>
+        <p>
+            아두이노, 라즈베리파이, 로봇 키트를 활용해  
+            센서 제어, 자동화,  
+            간단한 로봇 제작 프로젝트를 진행합니다.
+        </p>
+    </div>
 
-<p>
+    <div class="activity-card">
+        <h4>🧠 AI 활용 & 교육·봉사</h4>
+        <p>
+            AI를 활용한 모델링, 코딩 보조, 아이디어 구체화를 배우고  
+            지역 아동·청소년을 대상으로  
+            메이커·코딩 체험 교육과 재능 봉사를 실천합니다.
+        </p>
+    </div>
+
+</div>
+
+<p style="margin-top:30px;">
     ✨ 코딩썬샤인은 결과보다 <strong>과정과 경험</strong>을 중요하게 여기며,<br>
     혼자서는 어려운 도전도 <strong>함께 배우고 만드는 즐거움</strong>을 추구합니다.
 </p>
@@ -409,6 +497,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
