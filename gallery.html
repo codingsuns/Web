@@ -275,7 +275,13 @@ footer {
     flex-direction: column;
     justify-content: center;    /* 세로 가운데 정렬 */
 }
-
+.intro-wrap img,
+.outro-wrap img {
+    width: 100%;
+    height: 240px;  /* 박스 높이에 맞춰 고정 */
+    object-fit: cover;
+    border-radius: 14px;
+}
 /* 모바일 */
 @media (max-width: 700px) {
     .intro-wrap img,
@@ -555,6 +561,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
