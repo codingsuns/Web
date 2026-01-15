@@ -255,6 +255,36 @@ footer {
     margin: 0;
 }
 
+
+
+    //////////
+
+    .intro-wrap,
+.outro-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.intro-wrap img,
+.outro-wrap img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+/* 모바일 */
+@media (max-width: 700px) {
+    .intro-wrap,
+    .outro-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+    
+    ///////
     
 </style>
 </head>
@@ -282,23 +312,25 @@ footer {
     <h2>동호회 소개</h2>
 
     <!-- 소개 이미지 2장 -->
-    <div class="about-images">
-        <img src="images/about_activity1.jpg" alt="코딩썬샤인 활동사진 1">
-        <img src="images/about_activity2.jpg" alt="코딩썬샤인 활동사진 2">
+<div class="intro-wrap">
+
+    <img src="images/about_activity1.jpg" alt="코딩썬샤인 인트로 이미지">
+
+    <div class="intro-box">
+        <h3>☀️ 코딩썬샤인은 이런 곳이에요</h3>
+        <p>
+            <strong>코딩썬샤인</strong>은 코딩, 로봇, 3D 프린팅을 중심으로<br>
+            <strong>배우는 즐거움과 만드는 경험</strong>을 나누는 메이커 동호회입니다.
+        </p>
+        <p>
+            전공 여부와 상관없이 누구나 참여할 수 있으며,<br>
+            AI 도구를 활용한 모델링과 코딩 학습으로<br>
+            아이디어를 <strong>빠르게 현실로 만드는 경험</strong>을 함께합니다.
+        </p>
     </div>
 
-<div class="intro-box">
-    <h3>☀️ 코딩썬샤인은 이런 곳이에요</h3>
-    <p>
-        <strong>코딩썬샤인</strong>은 코딩, 로봇, 3D 프린팅을 중심으로<br>
-        <strong>배우는 즐거움과 만드는 경험</strong>을 나누는 메이커 동호회입니다.
-    </p>
-    <p>
-        전공 여부와 상관없이 누구나 참여할 수 있으며,<br>
-        AI 도구를 활용한 모델링과 코딩 학습으로<br>
-        아이디어를 <strong>빠르게 현실로 만드는 경험</strong>을 함께합니다.
-    </p>
 </div>
+
     
 
 <h3>🔧 주요 활동 영역</h3>
@@ -344,16 +376,22 @@ footer {
 
 </div>
 
-<div class="outro-box">
-    <p>
-        🌱 결과보다 <strong>과정</strong>을,<br>
-        📚 경쟁보다 <strong>성장</strong>을,<br>
-        🤝 혼자보다 <strong>함께 만드는 경험</strong>을 소중히 여깁니다.
-    </p>
-    <p style="margin-top:15px;">
-        코딩썬샤인은<br>
-        배우고, 만들고, 나누는 메이커 문화를 만들어갑니다.
-    </p>
+<div class="outro-wrap">
+
+    <img src="images/about_activity2.jpg" alt="코딩썬샤인 아웃트로 이미지">
+
+    <div class="outro-box">
+        <p>
+            🌱 결과보다 <strong>과정</strong>을,<br>
+            📚 경쟁보다 <strong>성장</strong>을,<br>
+            🤝 혼자보다 <strong>함께 만드는 경험</strong>을 소중히 여깁니다.
+        </p>
+        <p style="margin-top:15px;">
+            코딩썬샤인은<br>
+            배우고, 만들고, 나누는 메이커 문화를 만들어갑니다.
+        </p>
+    </div>
+
 </div>
 </section>
 
@@ -502,6 +540,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
