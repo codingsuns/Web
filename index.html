@@ -271,8 +271,7 @@ footer {
 .intro-wrap img,
 .outro-wrap img {
     width: 100%;
-    height: 100%;
-    max-height: 260px;   /* ⭐ 웹에서 과도하게 커지는 것 방지 */
+    height: 240px;          /* ⭐ 고정 높이 */
     border-radius: 14px;
     object-fit: cover;
 }
@@ -396,22 +395,26 @@ footer {
     <img src="images/about_activity2.jpg" alt="코딩썬샤인 아웃트로 이미지">
 
 <div class="outro-box">
-    <p>
-        🌱 코딩썬샤인은 결과보다  
-        <strong>각자의 창작 과정과 배움</strong>을 소중히 여깁니다.
-    </p>
+    <div class="outro-grid">
+        <div class="outro-item">
+            🌱 결과보다 <strong>창작의 과정과 배움</strong>
+        </div>
 
-    <p style="margin-top:12px;">
-        처음 만드는 3D 모델,  
-        첫 줄의 코드,  
-        처음 움직이는 로봇까지 —
-    </p>
+        <div class="outro-item">
+            🧩 3D 모델링 · 코딩 · 로봇 제작의 첫 경험
+        </div>
 
-    <p style="margin-top:12px;">
-        그 모든 경험이 메이커로 성장하는  
-        <strong>의미 있는 한 걸음</strong>입니다. ☀️
-    </p>
+        <div class="outro-item">
+            🚀 시행착오까지 포함한 <strong>진짜 메이커 활동</strong>
+        </div>
+
+        <div class="outro-item highlight">
+            혼자보다 함께,  
+            한 걸음씩 성장합니다 ☀️
+        </div>
+    </div>
 </div>
+
 
 </div>
 </section>
@@ -561,6 +564,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
