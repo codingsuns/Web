@@ -256,21 +256,23 @@ footer {
 }
 
 
-
 .intro-wrap,
 .outro-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 좌우 반반 */
     gap: 25px;
-    align-items: center;
+    align-items: stretch; /* ⭐ 높이 맞춤 */
     margin-bottom: 40px;
 }
 
+
+/* 글 박스 */
 .intro-box,
 .outro-box {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 세로 가운데 정렬 */
+    height: 240px;           /* 이미지 높이에 맞춤 */
 }
 
     .intro-wrap,
@@ -282,15 +284,16 @@ footer {
     margin-bottom: 40px;
 }
 
+    
+/* 이미지 박스 안에서 잘리게 */
 .intro-wrap img,
 .outro-wrap img {
     width: 100%;
-    height: 60px;       /* 박스 높이 고정 */
+    height: 240px;       /* 박스 높이 고정 */
     object-fit: cover;   /* 비율 유지하면서 박스 안에서 잘림 */
     border-radius: 14px;
     display: block;
 }
-/* 모바일 */
 @media (max-width: 700px) {
     .intro-wrap,
     .outro-wrap {
@@ -298,11 +301,12 @@ footer {
     }
 
     .intro-wrap img,
-    .outro-wrap img {
-        height: 180px;
+    .outro-wrap img,
+    .intro-box,
+    .outro-box {
+        height: auto;   /* 모바일에서는 자연스럽게 */
     }
 }
-
     
 
     
@@ -569,6 +573,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
