@@ -43,18 +43,12 @@ nav a {
 nav a:hover { color: #ffcc00; }
 
 section {
-    padding: 40px 30px;
+    padding: 40px 20px;
     max-width: 900px;
-    margin: 30px auto;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 245, 200, 0.95),
-        #ffffff
-    );
-    border-radius: 16px;
-    border-left: 6px solid #ffcc00;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    margin: 20px auto;
+    background: white;
 }
+
 /* 자료 목록 */
 .edu-list li {
     margin-bottom: 10px;
@@ -67,30 +61,24 @@ footer {
     padding: 10px;
 }
 
-.edu-list {
-    padding-left: 0;
-}
 
-.edu-list > li {
-    list-style: none;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.edu-list ul {
-    margin-top: 8px;
-    padding-left: 20px;
-}
-
-.edu-list ul li {
-    list-style: none;
-    margin-bottom: 6px;
-    font-weight: normal;
+.edu-card {
+    margin-top: 20px;
+    padding: 30px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 245, 200, 0.95),
+        #ffffff
+    );
+    border-radius: 16px;
+    border-left: 6px solid #ffcc00;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 a {
     text-decoration: none;
 }
+
 </style>
 </head>
 
@@ -113,7 +101,8 @@ a {
 
 <section>
     <h2>▶ 교육자료</h2>
-    <p>동호회에서 사용하거나 공유하는 학습 자료</p>
+<div class="edu-card">
+    <p>동호회에서 사용하거나 공유하는 학습 자료입니다.</p>
 
 <ul class="edu-list">
     <li>📄 3D 프린팅 기초 자료
@@ -122,27 +111,19 @@ a {
 
 
 
-            <li>🎥 <a href="https://www.youtube.com/watch?v=-bYwgUPOIq8" target="_blank">Bambulab 3D프린터 노즐 필라 뭉침 자가수리 </a></li>
+            <li>🎥 <a href="https://www.youtube.com/watch?v=-bYwgUPOIq8" target="_blank">Bambulab A1 시리즈 노즐 배불뚝이 자가수리 방법</a></li>
             <li>🎥 <a href="https://www.youtube.com/watch?v=PmUvrRnkpKM" target="_blank">Bambulab 스튜디오 사용법</a></li>
-<li>📁 <a href="https://drive.google.com/drive/folders/1SY9ZFanGDRnvTQA7rdPZL7F_3GmKsgzi?usp=sharing" target="_blank">
-    [코딩썬샤인] 구글 드라이브 수업 자료
-</a>
+  <li>📁 <a href="https://drive.google.com/drive/folders/1SY9ZFanGDRnvTQA7rdPZL7F_3GmKsgzi?usp=sharing" target="_blank">[코딩썬샤인] 구글 드라이브 수업 자료 PDF</a></li>
+  <li>📕 <a href="https://drive.google.com/file/d/1VsuSYBRAYtVJ7a7sJXQ5zCsJSsz5ms2O/view?usp=sharing" target="_blank">[코딩썬샤인] 1) 3D Printer 기초 내용.pdf</a></li>
+  <li>📕 <a href="https://drive.google.com/file/d/1P5kjU_lJ46uFV3F-vGuHpMZRZ1Fn9Bzp/view?usp=sharing" target="_blank">[코딩썬샤인] 2) 3D Printer 도색 과정 소개.pdf</a></li>
+        </ul>
 
-    <ul>
-        <li>📕 <a href="https://drive.google.com/file/d/1VsuSYBRAYtVJ7a7sJXQ5zCsJSsz5ms2O/view?usp=sharing" target="_blank">
-            1) 3D Printer 기초 내용.pdf
-        </a></li>
 
-        <li>📕 <a href="https://drive.google.com/file/d/1P5kjU_lJ46uFV3F-vGuHpMZRZ1Fn9Bzp/view?usp=sharing" target="_blank">
-            2) 3D Printer 도색 과정 소개.pdf
-        </a></li>
-    </ul>
-</li>
-</ul>
+    </li>
     <li>📄 파이썬 입문 자료
             <ul>
             <li>🎥 <a href="https://www.youtube.com/watch?v=7ZJ4oo4h8vI" target="_blank">AI 시대에 코딩을 배워야 하는 이유?</a></li>
-            <li>🎥 <a href="https://www.youtube.com/watch?v=Blc6DVtjyX8" target="_blank">파이썬 1시간만에 배우기 [워니코딩]</a></li>
+            <li>🎥 <a href="https://www.youtube.com/watch?v=Blc6DVtjyX8" target="_blank">파이썬 1시간만에 배우기 [유투브 워니코딩]</a></li>
         </ul>
     </li>
     <li>📄 로봇 / ROS 기초 정리</li>
@@ -151,6 +132,7 @@ a {
 
 
 </ul>
+</div>
 </section>
 
 <footer>
@@ -159,8 +141,6 @@ a {
 
 </body>
 </html>
-
-
 
 
 
