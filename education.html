@@ -43,12 +43,18 @@ nav a {
 nav a:hover { color: #ffcc00; }
 
 section {
-    padding: 40px 20px;
+    padding: 40px 30px;
     max-width: 900px;
-    margin: 20px auto;
-    background: white;
+    margin: 30px auto;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 245, 200, 0.95),
+        #ffffff
+    );
+    border-radius: 16px;
+    border-left: 6px solid #ffcc00;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
-
 /* 자료 목록 */
 .edu-list li {
     margin-bottom: 10px;
@@ -59,6 +65,31 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+}
+
+.edu-list {
+    padding-left: 0;
+}
+
+.edu-list > li {
+    list-style: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.edu-list ul {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.edu-list ul li {
+    list-style: none;
+    margin-bottom: 6px;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
 }
 </style>
 </head>
@@ -93,13 +124,21 @@ footer {
 
             <li>🎥 <a href="https://www.youtube.com/watch?v=-bYwgUPOIq8" target="_blank">Bambulab A1 시리즈 노즐 배불뚝이 자가수리 방법</a></li>
             <li>🎥 <a href="https://www.youtube.com/watch?v=PmUvrRnkpKM" target="_blank">Bambulab 스튜디오 사용법</a></li>
-  <li>📁 <a href="https://drive.google.com/drive/folders/1SY9ZFanGDRnvTQA7rdPZL7F_3GmKsgzi?usp=sharing" target="_blank">[코딩썬샤인] 구글 드라이브 수업 자료 PDF</a></li>
-  <li>📕 <a href="https://drive.google.com/file/d/1VsuSYBRAYtVJ7a7sJXQ5zCsJSsz5ms2O/view?usp=sharing" target="_blank">[코딩썬샤인] 1) 3D Printer 기초 내용.pdf</a></li>
-  <li>📕 <a href="https://drive.google.com/file/d/1P5kjU_lJ46uFV3F-vGuHpMZRZ1Fn9Bzp/view?usp=sharing" target="_blank">[코딩썬샤인] 2) 3D Printer 도색 과정 소개.pdf</a></li>
-        </ul>
+<li>📁 <a href="https://drive.google.com/drive/folders/1SY9ZFanGDRnvTQA7rdPZL7F_3GmKsgzi?usp=sharing" target="_blank">
+    [코딩썬샤인] 구글 드라이브 수업 자료
+</a>
 
+    <ul>
+        <li>📕 <a href="https://drive.google.com/file/d/1VsuSYBRAYtVJ7a7sJXQ5zCsJSsz5ms2O/view?usp=sharing" target="_blank">
+            1) 3D Printer 기초 내용.pdf
+        </a></li>
 
-    </li>
+        <li>📕 <a href="https://drive.google.com/file/d/1P5kjU_lJ46uFV3F-vGuHpMZRZ1Fn9Bzp/view?usp=sharing" target="_blank">
+            2) 3D Printer 도색 과정 소개.pdf
+        </a></li>
+    </ul>
+</li>
+</ul>
     <li>📄 파이썬 입문 자료
             <ul>
             <li>🎥 <a href="https://www.youtube.com/watch?v=7ZJ4oo4h8vI" target="_blank">AI 시대에 코딩을 배워야 하는 이유?</a></li>
