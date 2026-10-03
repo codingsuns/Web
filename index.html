@@ -42,6 +42,8 @@
     }
     .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--serif); font-weight: 700; font-size: 21px; }
     .brand-mark { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid currentColor; border-radius: 50%; font: 15px var(--sans); }
+    .brand-lockup { display: grid; gap: 3px; }
+    .brand-tagline { font: 500 10px/1.3 var(--sans); letter-spacing: .02em; opacity: .78; }
     .nav { display: flex; align-items: center; gap: 35px; font-size: 13px; }
     .nav a { opacity: .9; transition: opacity .2s; }
     .nav a:hover { opacity: .65; }
@@ -198,6 +200,11 @@
     footer { display: flex; justify-content: space-between; gap: 30px; align-items: center; padding-block: 27px; color: #6d7066; font-size: 10px; }
     footer .brand { color: var(--ink); font-size: 16px; }
     footer .brand-mark { width: 24px; height: 24px; font-size: 12px; }
+    .back-to-top { position: fixed; z-index: 5; right: max(24px, calc((100vw - 1240px) / 2)); bottom: 24px; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(53,86,75,.28); border-radius: 50%; background: rgba(245,242,233,.88); color: var(--moss); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s, background .2s; }
+    .back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: var(--leaf); }
+    .back-to-top:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    .back-to-top svg { width: 17px; height: 17px; }
 
     @keyframes arrive { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
@@ -263,7 +270,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="코딩썬샤인 홈"><span class="brand-mark" aria-hidden="true">코</span>코딩썬샤인</a>
+    <a class="brand" href="#home" aria-label="코딩썬샤인 홈, 광양에서 함께 만드는 메이커 지역 모임"><span class="brand-mark" aria-hidden="true">코</span><span class="brand-lockup"><span>코딩썬샤인</span><span class="brand-tagline">광양에서 함께 만드는 메이커 지역 모임</span></span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">메뉴</button>
     <nav class="nav" id="main-nav" aria-label="주요 메뉴">
       <a href="#about">모임 소개</a>
@@ -426,7 +433,7 @@
       <div class="join-content">
         <p class="section-label">BRING YOUR CURIOSITY</p>
         <h2>배우고 싶은 마음,<br>그걸로 충분해요.</h2>
-        <p><strong>서로의 생각과 속도를 존중하는 마음은 함께하기 위한 기본이에요.</strong> 배우고 싶은 마음과 함께 나누고 싶은 꿈을 안고 다음 모임에서 만나요.</p>
+        <p><strong>서로의 생각과 속도를 존중하는 마음은 함께하기 위한 기본이에요.</strong><br>배우고 싶은 마음과 함께 나누고 싶은 꿈을 안고 다음 모임에서 만나요.</p>
         <a class="button-link" href="#schedule">모임 일정 살펴보기 <span aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -436,7 +443,7 @@
         <div class="contact-copy">
           <p class="section-label">CONTACT · SAY HELLO</p>
           <h2 id="contact-title">궁금한 점이 있거나<br>함께하고 싶으신가요?</h2>
-          <p>코딩썬샤인에 관심이 있거나 참여 및 협업을 원하신다면 언제든지 연락 주세요.</p>
+          <p>함께 만들고 배우며 서로의 꿈을 나누는 곳,<br>코딩썬샤인에서 여러분의 꿈을 현실로 만들어 봐요.</p>
           <div class="contact-interests" aria-labelledby="contact-interests-title">
             <h3 id="contact-interests-title">관심 분야</h3>
             <div class="interest-tags">
@@ -469,9 +476,16 @@
     <a href="#home">맨 위로 ↑</a>
   </footer>
 
+  <a class="back-to-top" href="#home" aria-label="페이지 맨 위로 이동">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </a>
+
   <script>
     const menuButton = document.querySelector('.menu-toggle');
     const navigation = document.querySelector('.nav');
+    const backToTop = document.querySelector('.back-to-top');
 
     menuButton.addEventListener('click', () => {
       const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
@@ -485,6 +499,13 @@
         navigation.classList.remove('is-open');
       }
     });
+
+    function updateBackToTopVisibility() {
+      backToTop.classList.toggle('is-visible', window.scrollY > 400);
+    }
+
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    updateBackToTopVisibility();
 
     const meetupDate = document.querySelector('#next-meetup-date');
     const meetupDateFormatter = new Intl.DateTimeFormat('ko-KR', {
