@@ -140,8 +140,7 @@
     .album-feature::after { position: absolute; top: -190px; right: max(-90px, calc((100vw - 1450px) / 2)); width: 340px; height: 340px; border: 1px solid rgba(53,86,75,.1); border-radius: 50%; box-shadow: 0 0 0 24px rgba(53,86,75,.035), 0 0 0 49px rgba(53,86,75,.025); content: ""; pointer-events: none; }
     .album-feature-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-block: 38px; }
     .album-message { display: flex; align-items: center; gap: 17px; }
-    .album-feature-icon { display: grid; width: 60px; height: 60px; flex: 0 0 60px; place-items: center; background: var(--moss); color: var(--sunshine); box-shadow: 5px 5px 0 rgba(53,86,75,.12); }
-    .album-feature-icon .album-icon { transform: scale(1.2); }
+    .album-feature-icon { display: block; width: 72px; height: 72px; flex: 0 0 72px; object-fit: contain; }
     .album-copy .section-label { margin-bottom: 6px; letter-spacing: .12em; }
     .album-copy h2 { margin-bottom: 5px; font: 400 23px/1.5 var(--serif); }
     .album-copy p { margin: 0; color: #686d62; font-size: 12px; line-height: 1.7; }
@@ -251,7 +250,7 @@
       .activity-meta { margin-top: 17px; }
       .album-feature-inner { align-items: flex-start; flex-direction: column; gap: 20px; padding-block: 26px; }
       .album-message { align-items: flex-start; gap: 13px; }
-      .album-feature-icon { width: 48px; height: 48px; flex-basis: 48px; }
+      .album-feature-icon { width: 58px; height: 58px; flex-basis: 58px; }
       .album-copy h2 { font-size: 19px; }
       .album-copy p { max-width: 270px; }
       .album-action { width: 100%; justify-content: space-between; }
@@ -398,7 +397,7 @@
     <section class="album-feature" aria-labelledby="album-title">
       <div class="album-feature-inner wrap">
         <div class="album-message">
-          <span class="album-feature-icon" aria-hidden="true"><span class="album-icon"><span class="album-icon-page"></span></span></span>
+          <img class="album-feature-icon" src="img/ALB.png" alt="" aria-hidden="true">
           <div class="album-copy">
             <p class="section-label">OUR MAKER MOMENTS</p>
             <h2 id="album-title">만드는 순간도 함께 남겨요.</h2>
