@@ -77,8 +77,6 @@
     .hero h1 { max-width: 620px; margin-bottom: 20px; font: 400 clamp(44px, 5.7vw, 72px)/1.28 var(--serif); letter-spacing: 0; }
     .hero h1 span { color: var(--sunshine); }
     .hero-copy { margin-bottom: 35px; font-size: 15px; line-height: 1.9; color: rgba(255,255,255,.87); }
-    .hero-action { display: flex; align-items: center; gap: 14px; }
-    .hero-mascot { display: block; width: 76px; height: 76px; flex: 0 0 76px; object-fit: contain; }
     .button-link { display: inline-flex; align-items: center; gap: 24px; padding: 15px 19px; border: 1px solid rgba(255,255,255,.75); font-size: 12px; transition: background .2s, color .2s; }
     .button-link:hover { background: white; color: var(--ink); }
     .button-link span { color: var(--coral); font-size: 18px; line-height: 0; }
@@ -108,6 +106,8 @@
     .section-top { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 46px; }
     .section-top .section-label { margin-bottom: 17px; }
     .section-heading { margin-bottom: 0; }
+    .resources-heading { display: flex; align-items: center; gap: 12px; }
+    .resources-mascot { display: block; width: 64px; height: 64px; flex: 0 0 64px; object-fit: contain; }
     .section-aside { max-width: 270px; margin: 0 0 5px; color: #6b6d64; font-size: 12px; line-height: 1.8; }
     .activity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .activity { position: relative; min-height: 280px; padding: 28px 27px 32px; }
@@ -229,13 +229,13 @@
       .hero-inner { width: calc(100% - 42px); margin-top: 0; grid-template-columns: 1fr; gap: 20px; }
       .hero h1 { font-size: clamp(42px, 11vw, 60px); }
       .hero-copy { font-size: 13px; }
-      .hero-action { gap: 10px; }
-      .hero-mascot { width: 62px; height: 62px; flex-basis: 62px; }
       .maker-photo { width: 100%; max-width: none; aspect-ratio: 1.15 / 1; justify-self: center; transform: none; }
       .maker-photo img { object-position: center 67%; }
       .hero-note { right: 21px; bottom: 17px; }
       .intro { grid-template-columns: 1fr; gap: 0; padding-block: 75px 70px; }
       .intro h2, .section-heading { font-size: 34px; }
+      .resources-mascot { width: 48px; height: 48px; flex-basis: 48px; }
+      .resources-heading { gap: 9px; }
       .intro-copy { padding-top: 8px; }
       .manifesto { min-height: 390px; }
       .activities { padding-block: 76px 80px; }
@@ -270,6 +270,10 @@
       .contact-qr { width: min(100%, 340px); justify-self: center; }
       footer { align-items: flex-start; flex-direction: column; gap: 13px; padding-block: 22px; }
     }
+    @media (max-width: 360px) {
+      .resources-mascot { width: 38px; height: 38px; flex-basis: 38px; }
+      .resources-heading { gap: 7px; font-size: 28px; }
+    }
   </style>
 </head>
 <body>
@@ -294,10 +298,7 @@
           <p class="eyebrow">CODING SUNSHINE · MAKER CLUB</p>
           <h1>꿈을 그리고,<br><span>현실로 출력하다.</span></h1>
           <p class="hero-copy">3D 프린터와 코드로 아이디어를 직접 만들고,<br>배움과 재능, 서로의 꿈을 나눠요.</p>
-          <div class="hero-action">
-            <img class="hero-mascot" src="img/SSUNI.png" alt="노트북으로 코딩하는 썬이 캐릭터">
-            <a class="button-link" href="#activities">함께 만드는 활동 보기 <span aria-hidden="true">↗</span></a>
-          </div>
+          <a class="button-link" href="#activities">함께 만드는 활동 보기 <span aria-hidden="true">↗</span></a>
         </div>
         <figure class="maker-photo">
           <img src="img/Mian%20사진.jpg" alt="메이커 작업실에서 서로 돕고 배우며 작업하는 코딩썬샤인 회원들">
@@ -364,7 +365,7 @@
       <div class="section-top">
         <div>
           <p class="section-label">MAKER LEARNING LIBRARY</p>
-          <h2 class="section-heading" id="resources-title">동호회 학습 자료</h2>
+          <h2 class="section-heading resources-heading" id="resources-title"><img class="resources-mascot" src="img/SSUNI.png" alt="노트북으로 코딩하는 썬이 캐릭터">동호회 학습 자료</h2>
         </div>
         <p class="section-aside">동호회에서 함께 사용하고 나누는<br>영상과 수업 자료를 모았어요.</p>
       </div>
