@@ -217,6 +217,13 @@
     .contact-bylaws-actions .contact-action { width: 100%; min-height: 48px; margin-top: 9px; padding: 10px 12px; gap: 8px; font-size: 11px; }
     .contact-bylaws-actions .contact-action > span:nth-of-type(1) { flex: 1; }
     .contact-book-icon { width: 17px; height: 17px; flex: 0 0 17px; }
+    .contact-webtoon-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; padding: 11px 13px; border: 1px solid rgba(53,86,75,.25); background: rgba(255,255,255,.42); color: var(--moss); font: 600 11px var(--sans); text-align: left; cursor: pointer; }
+    .contact-webtoon-toggle:hover { background: rgba(255,255,255,.72); }
+    .contact-webtoon-toggle:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+    .contact-webtoon { margin: 12px 0 0; }
+    .contact-webtoon[hidden] { display: none; }
+    .contact-webtoon img { display: block; width: 100%; height: auto; border: 1px solid rgba(32,41,35,.15); }
+    .contact-webtoon figcaption { margin-top: 7px; color: #686d62; font-size: 10px; text-align: center; }
     .contact-qr { margin: 0; padding: 24px; border: 1px solid rgba(32,41,35,.15); background: var(--paper); text-align: center; box-shadow: 8px 8px 0 rgba(53,86,75,.1); }
     .contact-qr img { display: block; width: 100%; max-width: 250px; aspect-ratio: 1; margin: 0 auto 16px; object-fit: contain; }
     .contact-qr figcaption { color: #686d62; font-size: 11px; }
@@ -529,6 +536,13 @@
               <a class="contact-action" href="https://docs.google.com/spreadsheets/d/1COq_oAgVK7euDkdd3zEF3RqH73zsCWSDjSy3rLTWkQY/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="contact-book-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5c3.2-.9 6.1-.4 8.5 1.3v13c-2.4-1.7-5.3-2.2-8.5-1.3v-13ZM20.5 5.5c-3.2-.9-6.1-.4-8.5 1.3v13c2.4-1.7 5.3-2.2 8.5-1.3v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 8.5c1.5-.2 3 .1 4.3.8M6 11.5c1.5-.2 3 .1 4.3.8M18 8.5c-1.5-.2-3 .1-4.3.8M18 11.5c-1.5-.2-3 .1-4.3.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>코딩썬샤인 회칙</span><span aria-hidden="true">↗</span></a>
               <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI에게 물어보기</span><span aria-hidden="true">↗</span></a>
             </div>
+            <button class="contact-webtoon-toggle" type="button" aria-expanded="false" aria-controls="bylaws-webtoon">
+              <span>회칙 6컷 만화 보기</span><span aria-hidden="true">＋</span>
+            </button>
+            <figure class="contact-webtoon" id="bylaws-webtoon" hidden>
+              <img src="img/Webtoon.png" alt="코딩썬샤인 동호회 회칙을 설명하는 6컷 만화">
+              <figcaption>그림으로 보는 코딩썬샤인 회칙<br>(정회원은 월회비만 있으며, 정기 모임 참석비는 없습니다.)</figcaption>
+            </figure>
           </div>
         </div>
         <figure class="contact-qr">
@@ -552,6 +566,16 @@
   </a>
 
   <script>
+    const webtoonToggle = document.querySelector('.contact-webtoon-toggle');
+    const webtoon = document.querySelector('#bylaws-webtoon');
+
+    webtoonToggle.addEventListener('click', () => {
+      const isExpanded = webtoonToggle.getAttribute('aria-expanded') === 'true';
+      webtoonToggle.setAttribute('aria-expanded', String(!isExpanded));
+      webtoonToggle.querySelector('span:last-child').textContent = isExpanded ? '＋' : '−';
+      webtoon.hidden = isExpanded;
+    });
+
     document.querySelectorAll('.resource-list a[href*="youtube.com/"], .resource-list a[href*="youtu.be/"]').forEach((link) => {
       link.setAttribute('aria-expanded', 'false');
       link.addEventListener('click', (event) => {
