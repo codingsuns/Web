@@ -129,6 +129,9 @@
     .resource-list li { border-bottom: 1px solid var(--line); }
     .resource-list a { display: flex; min-height: 68px; align-items: center; gap: 22px; transition: color .2s, padding .2s; }
     .resource-list a:hover { padding-inline: 8px; color: var(--coral); }
+    .resource-video { padding: 0 16px 18px; }
+    .resource-video iframe { display: block; width: min(100%, 760px); aspect-ratio: 16 / 9; border: 0; background: #202923; }
+    .resource-video.is-short iframe { width: min(100%, 360px); aspect-ratio: 9 / 16; max-height: 75vh; margin-inline: auto; }
     .resource-folder { display: flex; min-height: 62px; align-items: center; gap: 18px; margin-bottom: 12px; padding: 12px 16px; border: 1px solid var(--line); color: var(--moss); transition: background .2s, color .2s; }
     .resource-folder:hover { background: var(--moss); color: white; }
     .resource-folder .resource-title { font-weight: 700; }
@@ -549,6 +552,74 @@
   </a>
 
   <script>
+    document.querySelectorAll('.resource-list a[href*="youtube.com/"], .resource-list a[href*="youtu.be/"]').forEach((link) => {
+      link.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        event.preventDefault();
+        const listItem = link.closest('li');
+        const existingPlayer = listItem.querySelector('.resource-video');
+        if (existingPlayer) {
+          existingPlayer.remove();
+          link.querySelector('.resource-type').textContent = '영상 보기 ↗';
+          link.setAttribute('aria-expanded', 'false');
+          return;
+        }
+
+        document.querySelectorAll('.resource-video').forEach((player) => {
+          const previousLink = player.closest('li').querySelector('a');
+          player.remove();
+          previousLink.querySelector('.resource-type').textContent = '영상 보기 ↗';
+          previousLink.setAttribute('aria-expanded', 'false');
+        });
+
+        const videoUrl = new URL(link.href);
+        const videoId = videoUrl.hostname.endsWith('youtu.be')
+          ? videoUrl.pathname.slice(1)
+          : videoUrl.pathname.includes('/shorts/')
+            ? videoUrl.pathname.split('/shorts/')[1]
+            : videoUrl.searchParams.get('v');
+        if (!videoId) {
+          window.location.assign(link.href);
+          return;
+        }
+
+        const player = document.createElement('div');
+        const isShort = videoUrl.pathname.includes('/shorts/');
+        player.className = `resource-video${isShort ? ' is-short' : ''}`;
+        const iframe = document.createElement('iframe');
+        const startTime = videoUrl.searchParams.get('t');
+        const embedUrl = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);
+        embedUrl.searchParams.set('autoplay', '1');
+        embedUrl.searchParams.set('rel', '0');
+        if (startTime) embedUrl.searchParams.set('start', String(parseInt(startTime, 10) || 0));
+        iframe.src = embedUrl.href;
+        iframe.title = link.querySelector('.resource-title').textContent;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        player.append(iframe);
+        listItem.append(player);
+        link.querySelector('.resource-type').textContent = '영상 닫기 −';
+        link.setAttribute('aria-expanded', 'true');
+      });
+    });
+
+    document.querySelectorAll('a[href^="https://"], a[href^="http://"]').forEach((link) => {
+      if (link.matches('.resource-list a[href*="youtube.com/"], .resource-list a[href*="youtu.be/"]')) return;
+
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download')) return;
+
+        const popup = window.open(link.href, '_blank', 'popup=yes,width=1000,height=800,resizable=yes,scrollbars=yes');
+        if (popup) {
+          popup.opener = null;
+          event.preventDefault();
+        }
+      });
+    });
+
     const menuButton = document.querySelector('.menu-toggle');
     const navigation = document.querySelector('.nav');
     const backToTop = document.querySelector('.back-to-top');
