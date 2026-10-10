@@ -194,8 +194,26 @@
     .contact-chat strong { font: 400 18px var(--serif); }
     .contact-chat span:last-child { color: #686d62; font-size: 12px; }
     .contact-action { display: inline-flex; align-items: center; gap: 12px; margin-top: 9px; padding: 14px 18px; background: var(--moss); color: white; font-size: 12px; font-weight: 600; transition: background .2s, transform .2s; }
+    .contact-social-icon { width: 18px; height: 18px; flex: 0 0 18px; }
+    .contact-robot-icon { width: 17px; height: 17px; flex: 0 0 17px; }
     .contact-action:hover { transform: translateY(-2px); background: var(--ink); }
     .contact-action:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    .contact-social-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 480px; }
+    .contact-social-actions .contact-action { width: 100%; min-height: 48px; margin-top: 9px; padding: 10px 12px; gap: 8px; font-size: 11px; }
+    .contact-social-actions .contact-action > span { margin-left: auto; }
+    .contact-bylaws { max-width: 480px; margin-top: 25px; padding-top: 21px; border-top: 1px solid var(--line); }
+    .contact-bylaws-intro { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 14px; align-items: start; margin-bottom: 12px; }
+    .contact-bylaws-heading { margin: 0; }
+    .contact-bylaws-icon { display: grid; width: 44px; height: 44px; grid-column: 1; grid-row: 1 / span 2; align-self: start; place-items: center; border-radius: 50%; background: linear-gradient(145deg, #d5e87c 4%, var(--leaf) 58%, #a8c44e 100%); color: var(--moss); }
+    .contact-bylaws-icon svg { width: 25px; height: 25px; }
+    .contact-bylaws h3 { margin: 0; font: 400 18px var(--serif); }
+    .contact-bylaws p.contact-bylaws-note { margin: 3px 0 0; color: #293b5a; font-size: 10px; font-weight: 700; line-height: 1.5; }
+    .contact-bylaws p { margin-bottom: 8px; color: #686d62; font-size: 12px; line-height: 1.9; }
+    .contact-bylaws-intro h3, .contact-bylaws-intro p { grid-column: 2; }
+    .contact-bylaws-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .contact-bylaws-actions .contact-action { width: 100%; min-height: 48px; margin-top: 9px; padding: 10px 12px; gap: 8px; font-size: 11px; }
+    .contact-bylaws-actions .contact-action > span:nth-of-type(1) { flex: 1; }
+    .contact-book-icon { width: 17px; height: 17px; flex: 0 0 17px; }
     .contact-qr { margin: 0; padding: 24px; border: 1px solid rgba(32,41,35,.15); background: var(--paper); text-align: center; box-shadow: 8px 8px 0 rgba(53,86,75,.1); }
     .contact-qr img { display: block; width: 100%; max-width: 250px; aspect-ratio: 1; margin: 0 auto 16px; object-fit: contain; }
     .contact-qr figcaption { color: #686d62; font-size: 11px; }
@@ -465,10 +483,50 @@
           </div>
           <div class="contact-chat">
             <span class="contact-chat-icon" aria-hidden="true">💬</span>
-            <strong>카카오톡 오픈채팅</strong>
+            <strong>코딩썬샤인 소통 채널</strong>
             <span>오픈톡에서 “코딩 썬샤인”으로 접속하세요!</span>
           </div>
-          <a class="contact-action" href="https://open.kakao.com/o/gXCcDKZc" target="_blank" rel="noopener noreferrer">참여 오픈채팅 바로가기 <span aria-hidden="true">↗</span></a>
+          <div class="contact-social-actions">
+            <a class="contact-action" href="https://open.kakao.com/o/gXCcDKZc" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FEE500" d="M12 2.5c-5.4 0-9.8 3.5-9.8 7.8 0 2.8 1.9 5.3 4.8 6.7l-1 4.2c-.1.5.4.8.8.5l4.9-3.1h.3c5.4 0 9.8-3.5 9.8-7.8S17.4 2.5 12 2.5Z"/><circle cx="8" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="12" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="16" cy="10.3" r="1" fill="#3C1E1E"/></svg><span>카카오톡 오픈톡</span><span aria-hidden="true">↗</span></a>
+            <a class="contact-action" href="https://www.instagram.com/co_shine_gw/" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="instagram-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD776"/><stop offset=".5" stop-color="#F56040"/><stop offset="1" stop-color="#C13584"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#instagram-gradient)"/><rect x="6" y="6" width="12" height="12" rx="3.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17" cy="7.3" r="1.1" fill="white"/></svg><span>인스타그램 채널</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="contact-bylaws">
+            <div class="contact-bylaws-intro">
+              <span class="contact-bylaws-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <defs>
+                    <linearGradient id="bylaws-people-shine" x1="5" y1="3" x2="18" y2="21" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#567d53"/>
+                      <stop offset=".52" stop-color="#35564b"/>
+                      <stop offset="1" stop-color="#263f37"/>
+                    </linearGradient>
+                  </defs>
+                  <g fill="#263f37" opacity=".2" transform="translate(0 .45)">
+                    <circle cx="12" cy="6.5" r="3.2"/>
+                    <circle cx="4.8" cy="8" r="2.5"/>
+                    <circle cx="19.2" cy="8" r="2.5"/>
+                    <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
+                  </g>
+                  <g fill="url(#bylaws-people-shine)">
+                    <circle cx="12" cy="6.5" r="3.2"/>
+                    <circle cx="4.8" cy="8" r="2.5"/>
+                    <circle cx="19.2" cy="8" r="2.5"/>
+                    <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
+                  </g>
+                  <path d="M9.1 4.4a3.1 3.1 0 0 1 3-1.1" stroke="white" stroke-opacity=".55" stroke-width=".7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="contact-bylaws-heading">
+                <h3>함께 지키는 코딩썬샤인 회칙</h3>
+                <p class="contact-bylaws-note">(구글 로그인 필요 · 사내 접속 불가)</p>
+              </div>
+              <p>서로 존중하며 즐겁고 안전하게 활동할 수 있도록 약속을 확인해 주세요.</p>
+            </div>
+            <div class="contact-bylaws-actions">
+              <a class="contact-action" href="https://docs.google.com/spreadsheets/d/1COq_oAgVK7euDkdd3zEF3RqH73zsCWSDjSy3rLTWkQY/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="contact-book-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5c3.2-.9 6.1-.4 8.5 1.3v13c-2.4-1.7-5.3-2.2-8.5-1.3v-13ZM20.5 5.5c-3.2-.9-6.1-.4-8.5 1.3v13c2.4-1.7 5.3-2.2 8.5-1.3v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 8.5c1.5-.2 3 .1 4.3.8M6 11.5c1.5-.2 3 .1 4.3.8M18 8.5c-1.5-.2-3 .1-4.3.8M18 11.5c-1.5-.2-3 .1-4.3.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>코딩썬샤인 회칙</span><span aria-hidden="true">↗</span></a>
+              <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI에게 물어보기</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
         </div>
         <figure class="contact-qr">
           <img src="img/kakao_qr.png" alt="카카오톡 코딩썬샤인 오픈채팅 참여 QR 코드" loading="lazy">
