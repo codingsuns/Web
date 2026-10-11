@@ -168,8 +168,11 @@
     .schedule-layout { display: grid; grid-template-columns: .78fr 1.22fr; gap: 86px; align-items: stretch; }
     .schedule-card { display: flex; min-height: 390px; flex-direction: column; justify-content: space-between; padding: 30px; background: var(--moss); color: white; }
     .schedule-card-label, .schedule-next-label { margin: 0; color: rgba(255,255,255,.72); font-size: 10px; font-weight: 600; }
-    .schedule-day { display: flex; align-items: baseline; gap: 15px; margin: 13px 0 4px; }
-    .schedule-day strong { font: 400 76px/.95 var(--serif); }
+    .schedule-card-main { display: grid; grid-template-columns: minmax(0, 1.28fr) minmax(90px, .72fr); gap: 14px; align-items: center; }
+    .schedule-card-mascot { display: block; width: 100%; max-height: 175px; grid-column: 2; grid-row: 1; object-fit: contain; }
+    .schedule-card-copy { min-width: 0; grid-column: 1; grid-row: 1; }
+    .schedule-day { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 13px 0 4px; }
+    .schedule-day strong { font: 400 clamp(48px, 5vw, 64px)/.95 var(--serif); }
     .schedule-day span { color: var(--leaf); font: 600 13px var(--sans); }
     .schedule-card-rule { margin: 0; font: 400 20px/1.6 var(--serif); }
     .schedule-place { margin: 17px 0 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.82); font-size: 11px; line-height: 1.8; }
@@ -297,7 +300,9 @@
       .schedule { padding-block: 72px 78px; }
       .schedule-layout { grid-template-columns: 1fr; gap: 32px; }
       .schedule-card { min-height: 300px; padding: 24px; }
-      .schedule-day strong { font-size: 66px; }
+      .schedule-card-main { grid-template-columns: minmax(0, 1.25fr) minmax(82px, .75fr); gap: 10px; }
+      .schedule-card-mascot { max-height: 140px; }
+      .schedule-day strong { font-size: 48px; }
       .schedule-main .section-heading { font-size: 32px; }
       .meetup-flow li { min-height: 57px; }
       .join { grid-template-columns: 1fr; }
@@ -458,8 +463,11 @@
         <div class="schedule-card" aria-label="매월 셋째 주 목요일 정기 모임">
           <p class="schedule-card-label">OUR MONTHLY MEETUP</p>
           <div class="schedule-card-main">
-            <div class="schedule-day"><strong>3rd</strong><span>THURSDAY</span></div>
-            <p class="schedule-card-rule">매월 셋째 주 목요일</p>
+            <div class="schedule-card-copy">
+              <div class="schedule-day"><strong>3rd</strong><span>THURSDAY</span></div>
+              <p class="schedule-card-rule">매월 셋째 주 목요일</p>
+            </div>
+            <img class="schedule-card-mascot" src="img/suni-monthly-meetup.png" alt="손가락을 들어 모임을 알리는 썬이 캐릭터" loading="lazy">
           </div>
           <p class="schedule-place"><strong>MEETUP PLACE · TIME</strong>광영동 대아상가 2층<br>코딩썬샤인 동호회실 · 오후 6시 이후</p>
           <div class="schedule-next">
