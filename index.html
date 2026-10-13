@@ -48,7 +48,6 @@
     .nav { display: flex; align-items: center; gap: 35px; font-size: 13px; }
     .nav a { opacity: .9; transition: opacity .2s; }
     .nav a:hover { opacity: .65; }
-    .nav .nav-cta { padding: 11px 17px; border: 1px solid rgba(255,255,255,.68); border-radius: 2px; }
     .nav .nav-album { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.68); }
     .album-icon { position: relative; display: inline-block; width: 22px; height: 21px; flex: 0 0 22px; }
     .album-icon::before { position: absolute; right: 1px; bottom: 2px; left: 1px; height: 13px; border: 1.5px solid currentColor; border-radius: 2px; background: var(--sunshine); content: ""; }
@@ -80,6 +79,8 @@
     .button-link { display: inline-flex; align-items: center; gap: 24px; padding: 15px 19px; border: 1px solid rgba(255,255,255,.75); font-size: 12px; transition: background .2s, color .2s; }
     .button-link:hover { background: white; color: var(--ink); }
     .button-link span { color: var(--coral); font-size: 18px; line-height: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-actions .hero-join { border-color: var(--sunshine); background: var(--sunshine); color: var(--ink); }
     .hero-note { position: absolute; right: max(48px, calc((100vw - 1240px) / 2)); bottom: 36px; font-size: 10px; color: rgba(255,255,255,.8); }
     .maker-photo { position: relative; z-index: 0; width: calc(100% + 24px); min-width: 0; aspect-ratio: 1.15 / 1; margin: 0; overflow: hidden; background: transparent; transform: translateX(22px); }
     .maker-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 64%; }
@@ -153,7 +154,7 @@
     .album-feature::after { position: absolute; top: -190px; right: max(-90px, calc((100vw - 1450px) / 2)); width: 340px; height: 340px; border: 1px solid rgba(53,86,75,.1); border-radius: 50%; box-shadow: 0 0 0 24px rgba(53,86,75,.035), 0 0 0 49px rgba(53,86,75,.025); content: ""; pointer-events: none; }
     .album-feature-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-block: 38px; }
     .album-message { display: flex; align-items: center; gap: 17px; }
-    .album-feature-icon { display: block; width: 72px; height: 72px; flex: 0 0 72px; object-fit: contain; }
+    .album-feature-icon { display: block; width: 92px; height: 92px; flex: 0 0 92px; object-fit: contain; }
     .album-copy .section-label { margin-bottom: 6px; letter-spacing: .12em; }
     .album-copy h2 { margin-bottom: 5px; font: 400 23px/1.5 var(--serif); }
     .album-copy p { margin: 0; color: #686d62; font-size: 12px; line-height: 1.7; }
@@ -260,7 +261,6 @@
       .nav.is-open { display: flex; flex-direction: column; }
       .nav a { padding: 14px 0; border-bottom: 1px solid var(--line); }
       .nav a:last-child { border: 0; }
-      .nav .nav-cta { padding: 14px 0; border: 0; }
       .nav .nav-album { width: 40px; height: 40px; align-self: flex-start; margin-block: 8px; padding: 0; border: 1px solid var(--line); }
       .resources { padding-bottom: 76px; }
       .resource-group-card { padding: 17px 16px; }
@@ -272,6 +272,8 @@
       .hero-inner { width: calc(100% - 42px); margin-top: 0; grid-template-columns: 1fr; gap: 20px; }
       .hero h1 { font-size: clamp(42px, 11vw, 60px); }
       .hero-copy { font-size: 13px; }
+      .hero-actions { flex-wrap: nowrap; gap: 8px; }
+      .hero-actions .button-link { min-width: 0; flex: 1 1 0; justify-content: space-between; gap: 4px; padding: 12px 9px; font-size: 10px; white-space: nowrap; }
       .maker-photo { width: 100%; max-width: none; aspect-ratio: 1.15 / 1; justify-self: center; transform: none; }
       .maker-photo img { object-position: center 67%; }
       .hero-note { right: 21px; bottom: 17px; }
@@ -293,7 +295,7 @@
       .activity-meta { margin-top: 17px; }
       .album-feature-inner { align-items: flex-start; flex-direction: column; gap: 20px; padding-block: 26px; }
       .album-message { align-items: flex-start; gap: 13px; }
-      .album-feature-icon { width: 58px; height: 58px; flex-basis: 58px; }
+      .album-feature-icon { width: 72px; height: 72px; flex-basis: 72px; }
       .album-copy h2 { font-size: 19px; }
       .album-copy p { max-width: 270px; }
       .album-action { width: 100%; justify-content: space-between; }
@@ -332,7 +334,6 @@
       <a href="#schedule">정기 모임</a>
       <a href="#contact">연락하기</a>
       <a class="nav-album" href="https://photos.app.goo.gl/fWfPwsbekQe6qWLa7" target="_blank" rel="noopener noreferrer" aria-label="코딩썬샤인 포토앨범 새 탭에서 열기" title="코딩썬샤인 포토앨범"><span class="album-icon" aria-hidden="true"><span class="album-icon-page"></span></span></a>
-      <a class="nav-cta" href="#join">함께하기 <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -343,7 +344,10 @@
           <p class="eyebrow">CODING SUNSHINE · MAKER CLUB</p>
           <h1>꿈을 그리고,<br><span>현실로 출력하다.</span></h1>
           <p class="hero-copy">3D 프린터와 코드로 아이디어를 직접 만들고,<br>배움과 재능, 서로의 꿈을 나눠요.</p>
-          <a class="button-link" href="#activities">함께 만드는 활동 보기 <span aria-hidden="true">↗</span></a>
+          <div class="hero-actions">
+            <a class="button-link" href="#activities">함께 만드는 활동 보기 <span aria-hidden="true">↗</span></a>
+            <a class="button-link hero-join" href="#contact">참여하기 <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
         <figure class="maker-photo">
           <img src="img/Mian%20사진.jpg" alt="메이커 작업실에서 서로 돕고 배우며 작업하는 코딩썬샤인 회원들">
@@ -447,7 +451,7 @@
     <section class="album-feature" aria-labelledby="album-title">
       <div class="album-feature-inner wrap">
         <div class="album-message">
-          <img class="album-feature-icon" src="img/ALB.png" alt="" aria-hidden="true">
+          <img class="album-feature-icon" src="img/ALBN.png" alt="" aria-hidden="true">
           <div class="album-copy">
             <p class="section-label">OUR MAKER MOMENTS</p>
             <h2 id="album-title">만드는 순간도 함께 남겨요.</h2>
@@ -518,7 +522,7 @@
           <div class="contact-chat">
             <span class="contact-chat-icon" aria-hidden="true">💬</span>
             <strong>코딩썬샤인 소통 채널</strong>
-            <span>오픈톡에서 “코딩 썬샤인”으로 접속하세요!</span>
+            <span>오픈톡에서 "코딩썬샤인" 접속 가능합니다!</span>
           </div>
           <div class="contact-social-actions">
             <a class="contact-action" href="https://open.kakao.com/o/gXCcDKZc" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FEE500" d="M12 2.5c-5.4 0-9.8 3.5-9.8 7.8 0 2.8 1.9 5.3 4.8 6.7l-1 4.2c-.1.5.4.8.8.5l4.9-3.1h.3c5.4 0 9.8-3.5 9.8-7.8S17.4 2.5 12 2.5Z"/><circle cx="8" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="12" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="16" cy="10.3" r="1" fill="#3C1E1E"/></svg><span>카카오톡 오픈톡</span><span aria-hidden="true">↗</span></a>
