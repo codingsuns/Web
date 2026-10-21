@@ -110,10 +110,15 @@
     .resources-heading { display: flex; align-items: center; gap: 12px; }
     .resources-mascot { display: block; width: 64px; height: 64px; flex: 0 0 64px; object-fit: contain; }
     .section-aside { max-width: 270px; margin: 0 0 5px; color: #6b6d64; font-size: 12px; line-height: 1.8; }
-    .activity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .activity { position: relative; min-height: 280px; padding: 28px 27px 32px; }
-    .activity + .activity::before { position: absolute; inset: 0 auto 0 0; width: 1px; background: var(--line); content: ""; }
-    .activity-photo { width: 100%; aspect-ratio: 1.25 / 1; margin: 0 0 20px; overflow: hidden; background: #dce2d8; }
+    .activity-carousel { overflow: hidden; padding: 24px 0; touch-action: pan-y; cursor: grab; }
+    .activity-grid { display: flex; width: max-content; gap: 18px; transition: transform .7s cubic-bezier(.22,.68,0,1); }
+    .activity-grid:not(.is-moving) { transition: none; }
+    .activity-carousel.is-dragging { cursor: grabbing; user-select: none; }
+    .activity-carousel.is-dragging .activity-grid { transition: none; }
+    .activity { position: relative; flex: 0 0 clamp(280px, 29vw, 350px); min-height: 280px; padding: 28px 27px 32px; border: 1px solid rgba(32,41,35,.12); background: rgba(255,255,255,.56); box-shadow: 0 8px 22px rgba(32,41,35,.045); opacity: .5; filter: blur(2px) brightness(.82); transform: scale(.94); transition: opacity .6s ease, filter .6s ease, transform .6s ease, box-shadow .6s ease, background .6s ease; }
+    .activity.is-active { z-index: 1; background: var(--paper); box-shadow: 0 18px 42px rgba(32,41,35,.16); opacity: 1; filter: none; transform: scale(1.02); }
+    .activity-clone { pointer-events: none; }
+    .activity-photo { position: relative; width: 100%; aspect-ratio: 1.25 / 1; margin: 0 0 20px; overflow: hidden; background: #dce2d8; }
     .activity-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .activity:nth-child(1) .activity-photo img { object-position: center 50%; }
     .activity:nth-child(2) .activity-photo img { object-position: center 52%; }
@@ -122,7 +127,6 @@
     .activity h3 { margin-bottom: 11px; font: 400 22px var(--serif); }
     .activity p { max-width: 290px; margin-bottom: 0; color: #6b6d64; font-size: 12px; line-height: 1.9; }
     .activity-meta { display: flex; justify-content: space-between; margin-top: 25px; color: var(--moss); font-size: 10px; }
-
     .resources { padding-block: 0 112px; }
     .resource-group + .resource-group { margin-top: 42px; }
     .resource-group-card { padding: 22px 24px; border: 1px solid rgba(53,86,75,.18); background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(241,240,230,.68)); box-shadow: 0 8px 22px rgba(32,41,35,.045); }
@@ -287,10 +291,8 @@
       .activities { padding-block: 76px 80px; }
       .section-top { display: block; margin-bottom: 28px; }
       .section-aside { margin-top: 17px; }
-      .activity-grid { grid-template-columns: 1fr; }
-      .activity { min-height: 0; padding: 23px 0 27px; }
-      .activity + .activity { padding-left: 0; border-top: 1px solid var(--line); }
-      .activity + .activity::before { display: none; }
+      .activity-grid { gap: 14px; }
+      .activity { flex-basis: calc(100vw - 96px); min-height: 0; padding: 23px 20px 27px; }
       .activity-photo { aspect-ratio: 1.34 / 1; margin-bottom: 17px; }
       .activity-number { margin-bottom: 15px; }
       .activity-meta { margin-top: 17px; }
@@ -385,28 +387,30 @@
         </div>
         <p class="section-aside">처음이어도 괜찮아요. 각자의 속도로 배우고,<br>작은 시도부터 함께 완성해봐요.</p>
       </div>
-      <div class="activity-grid">
-        <article class="activity">
-          <figure class="activity-photo"><img src="img/idea.jpg" alt="직접 만든 아이디어 시제품과 메이커 활동" loading="lazy"></figure>
-          <p class="activity-number">01 — 3D PRINTING</p>
-          <h3>아이디어를 출력해요</h3>
-          <p>3D 모델링 기초부터 프린터 설정까지, 머릿속 아이디어를 손에 잡히는 물건으로.</p>
-          <div class="activity-meta"><span>기초부터 차근차근</span><span>만들기</span></div>
-        </article>
-        <article class="activity">
-          <figure class="activity-photo"><img src="img/CODE%20photo.jpg" alt="코드와 아두이노로 만든 자동 급수 장치" loading="lazy"></figure>
-          <p class="activity-number">02 — CREATIVE CODING</p>
-          <h3>코드로 움직여요</h3>
-          <p>코딩이 처음이어도 좋아요. 작은 프로그램과 인터랙티브 작품을 함께 만들어봐요.</p>
-          <div class="activity-meta"><span>함께 읽고 실습</span><span>코딩</span></div>
-        </article>
-        <article class="activity">
-          <figure class="activity-photo"><img src="img/vol.jpg" alt="아이들에게 만들기를 알려주며 재능을 나누는 모습" loading="lazy"></figure>
-          <p class="activity-number">03 — SKILL SHARING</p>
-          <h3>재능과 꿈을 나눠요</h3>
-          <p>디자인, 수리, 글쓰기, 아이디어까지. 내가 아는 것을 나누고 서로의 꿈을 응원해요.</p>
-          <div class="activity-meta"><span>누구나 제안 가능</span><span>함께 성장</span></div>
-        </article>
+      <div class="activity-carousel" id="activity-carousel" role="region" aria-label="배우고, 만들고, 나누기 활동 카드" aria-roledescription="캐러셀">
+        <div class="activity-grid" id="activity-track" aria-live="off">
+          <article class="activity">
+            <figure class="activity-photo"><img src="img/idea.jpg" alt="직접 만든 아이디어 시제품과 메이커 활동" loading="lazy"></figure>
+            <p class="activity-number">01 — 3D PRINTING</p>
+            <h3>아이디어를 출력해요</h3>
+            <p>3D 모델링 기초부터 프린터 설정까지, 머릿속 아이디어를 손에 잡히는 물건으로.</p>
+            <div class="activity-meta"><span>기초부터 차근차근</span><span>만들기</span></div>
+          </article>
+          <article class="activity">
+            <figure class="activity-photo"><img src="img/CODE%20photo.jpg" alt="코드와 아두이노로 만든 자동 급수 장치" loading="lazy"></figure>
+            <p class="activity-number">02 — CREATIVE CODING</p>
+            <h3>코드로 움직여요</h3>
+            <p>코딩이 처음이어도 좋아요. 작은 프로그램과 인터랙티브 작품을 함께 만들어봐요.</p>
+            <div class="activity-meta"><span>함께 읽고 실습</span><span>코딩</span></div>
+          </article>
+          <article class="activity">
+            <figure class="activity-photo"><img src="img/vol.jpg" alt="아이들에게 만들기를 알려주며 재능을 나누는 모습" loading="lazy"></figure>
+            <p class="activity-number">03 — SKILL SHARING</p>
+            <h3>재능과 꿈을 나눠요</h3>
+            <p>디자인, 수리, 글쓰기, 아이디어까지. 내가 아는 것을 나누고 서로의 꿈을 응원해요.</p>
+            <div class="activity-meta"><span>누구나 제안 가능</span><span>함께 성장</span></div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -614,6 +618,126 @@
       webtoonToggle.querySelector('span:last-child').textContent = isExpanded ? '＋' : '−';
       webtoon.hidden = isExpanded;
     });
+
+    const activityCarousel = document.querySelector('#activity-carousel');
+    const activityTrack = document.querySelector('#activity-track');
+    const activityCards = Array.from(activityTrack.children);
+    const activityCardCount = activityCards.length;
+    const activityReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activityIndex = activityCardCount;
+    let activityTimer;
+    let activityCarouselVisible = false;
+    let activityPointerId;
+    let activityPointerStartX = 0;
+    let activityTrackStartX = 0;
+    let activityDragging = false;
+
+    function centerActivityCard(animate = true) {
+      const activeCard = activityTrack.children[activityIndex];
+      if (!activeCard) return;
+
+      activityTrack.classList.toggle('is-moving', animate);
+      activityTrack.style.transform = `translateX(${(activityCarousel.clientWidth - activeCard.offsetWidth) / 2 - activeCard.offsetLeft}px)`;
+      Array.from(activityTrack.children).forEach((card, index) => {
+        card.classList.toggle('is-active', index === activityIndex);
+      });
+    }
+
+    function updateActivityCarouselTimer() {
+      window.clearInterval(activityTimer);
+      activityTimer = undefined;
+      const shouldAutoplay = activityCarouselVisible
+        && document.visibilityState === 'visible'
+        && !activityReducedMotion.matches;
+
+      if (shouldAutoplay) {
+        activityTimer = window.setInterval(() => {
+          activityIndex += 1;
+          centerActivityCard();
+        }, 6000);
+      }
+    }
+
+    activityTrack.addEventListener('transitionend', (event) => {
+      if (event.target !== activityTrack || event.propertyName !== 'transform') return;
+      if (activityIndex < activityCardCount) {
+        activityIndex += activityCardCount;
+        centerActivityCard(false);
+      } else if (activityIndex >= activityCardCount * 2) {
+        activityIndex -= activityCardCount;
+        centerActivityCard(false);
+      }
+    });
+
+    activityCarousel.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || event.target.closest('a, button')) return;
+
+      window.clearInterval(activityTimer);
+      activityTimer = undefined;
+      activityPointerId = event.pointerId;
+      activityPointerStartX = event.clientX;
+      const transform = getComputedStyle(activityTrack).transform;
+      activityTrackStartX = transform === 'none' ? 0 : new DOMMatrixReadOnly(transform).m41;
+      activityDragging = true;
+      activityCarousel.classList.add('is-dragging');
+      activityTrack.style.transform = `translateX(${activityTrackStartX}px)`;
+      activityCarousel.setPointerCapture(activityPointerId);
+      event.preventDefault();
+    });
+
+    activityCarousel.addEventListener('pointermove', (event) => {
+      if (!activityDragging || event.pointerId !== activityPointerId) return;
+
+      activityTrack.style.transform = `translateX(${activityTrackStartX + event.clientX - activityPointerStartX}px)`;
+    });
+
+    function finishActivityDrag(event) {
+      if (!activityDragging || event.pointerId !== activityPointerId) return;
+
+      const transform = getComputedStyle(activityTrack).transform;
+      const trackOffset = transform === 'none' ? 0 : new DOMMatrixReadOnly(transform).m41;
+      activityIndex = Array.from(activityTrack.children).reduce((closestIndex, card, index, cards) => {
+        const center = card.offsetLeft + card.offsetWidth / 2 + trackOffset;
+        const closestCenter = cards[closestIndex].offsetLeft + cards[closestIndex].offsetWidth / 2 + trackOffset;
+        return Math.abs(center - activityCarousel.clientWidth / 2) < Math.abs(closestCenter - activityCarousel.clientWidth / 2)
+          ? index
+          : closestIndex;
+      }, 0);
+      activityDragging = false;
+      activityPointerId = undefined;
+      activityCarousel.classList.remove('is-dragging');
+      centerActivityCard();
+      updateActivityCarouselTimer();
+    }
+
+    activityCarousel.addEventListener('pointerup', finishActivityDrag);
+    activityCarousel.addEventListener('pointercancel', finishActivityDrag);
+
+    const activityLeadingClones = document.createDocumentFragment();
+    const activityTrailingClones = document.createDocumentFragment();
+    activityCards.forEach((card) => {
+      const leadingClone = card.cloneNode(true);
+      const trailingClone = card.cloneNode(true);
+      leadingClone.classList.add('activity-clone');
+      trailingClone.classList.add('activity-clone');
+      leadingClone.setAttribute('aria-hidden', 'true');
+      trailingClone.setAttribute('aria-hidden', 'true');
+      activityLeadingClones.append(leadingClone);
+      activityTrailingClones.append(trailingClone);
+    });
+    activityTrack.prepend(activityLeadingClones);
+    activityTrack.append(activityTrailingClones);
+    window.requestAnimationFrame(() => centerActivityCard(false));
+    window.addEventListener('load', () => centerActivityCard(false), { once: true });
+
+    const activityObserver = new IntersectionObserver((entries) => {
+      activityCarouselVisible = entries.some((entry) => entry.isIntersecting);
+      updateActivityCarouselTimer();
+    }, { threshold: 0.1 });
+    activityObserver.observe(activityCarousel);
+    document.addEventListener('visibilitychange', updateActivityCarouselTimer);
+    activityReducedMotion.addEventListener('change', updateActivityCarouselTimer);
+    window.addEventListener('resize', () => centerActivityCard(false), { passive: true });
 
     document.querySelectorAll('.resource-list a[href*="youtube.com/"], .resource-list a[href*="youtu.be/"]').forEach((link) => {
       link.setAttribute('aria-expanded', 'false');
