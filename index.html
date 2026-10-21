@@ -631,6 +631,7 @@
     let activityPointerStartX = 0;
     let activityTrackStartX = 0;
     let activityDragging = false;
+    const activityCloneGroupSize = activityCardCount;
 
     function centerActivityCard(animate = true) {
       const activeCard = activityTrack.children[activityIndex];
@@ -641,6 +642,44 @@
       Array.from(activityTrack.children).forEach((card, index) => {
         card.classList.toggle('is-active', index === activityIndex);
       });
+    }
+
+    function createActivityCloneGroup() {
+      const fragment = document.createDocumentFragment();
+      activityCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.classList.add('activity-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        fragment.append(clone);
+      });
+      return fragment;
+    }
+
+    function getActivityCloneGroupWidth() {
+      const gap = parseFloat(getComputedStyle(activityTrack).columnGap) || 0;
+      return activityCards.reduce((width, card) => width + card.offsetWidth + gap, 0);
+    }
+
+    function extendActivityTrack(offset) {
+      const groupWidth = getActivityCloneGroupWidth();
+      let viewportLeft = -offset;
+      const viewportRight = viewportLeft + activityCarousel.clientWidth;
+
+      while (viewportRight > activityTrack.scrollWidth - groupWidth) {
+        activityTrack.append(createActivityCloneGroup());
+      }
+
+      while (viewportLeft < groupWidth) {
+        const previousWidth = activityTrack.scrollWidth;
+        activityTrack.prepend(createActivityCloneGroup());
+        const addedWidth = activityTrack.scrollWidth - previousWidth;
+        activityTrackStartX -= addedWidth;
+        activityIndex += activityCloneGroupSize;
+        offset -= addedWidth;
+        viewportLeft += addedWidth;
+      }
+
+      return offset;
     }
 
     function updateActivityCarouselTimer() {
@@ -654,17 +693,17 @@
         activityTimer = window.setInterval(() => {
           activityIndex += 1;
           centerActivityCard();
-        }, 6000);
+        }, 5000);
       }
     }
 
     activityTrack.addEventListener('transitionend', (event) => {
       if (event.target !== activityTrack || event.propertyName !== 'transform') return;
-      if (activityIndex < activityCardCount) {
-        activityIndex += activityCardCount;
+      if (activityIndex < activityCloneGroupSize) {
+        activityIndex += activityCloneGroupSize;
         centerActivityCard(false);
-      } else if (activityIndex >= activityCardCount * 2) {
-        activityIndex -= activityCardCount;
+      } else if (activityIndex >= activityTrack.children.length - activityCloneGroupSize) {
+        activityIndex -= activityCloneGroupSize;
         centerActivityCard(false);
       }
     });
@@ -680,6 +719,7 @@
       activityTrackStartX = transform === 'none' ? 0 : new DOMMatrixReadOnly(transform).m41;
       activityDragging = true;
       activityCarousel.classList.add('is-dragging');
+      activityTrack.classList.add('is-moving');
       activityTrack.style.transform = `translateX(${activityTrackStartX}px)`;
       activityCarousel.setPointerCapture(activityPointerId);
       event.preventDefault();
@@ -688,7 +728,8 @@
     activityCarousel.addEventListener('pointermove', (event) => {
       if (!activityDragging || event.pointerId !== activityPointerId) return;
 
-      activityTrack.style.transform = `translateX(${activityTrackStartX + event.clientX - activityPointerStartX}px)`;
+      const offset = extendActivityTrack(activityTrackStartX + event.clientX - activityPointerStartX);
+      activityTrack.style.transform = `translateX(${offset}px)`;
     });
 
     function finishActivityDrag(event) {
@@ -713,20 +754,11 @@
     activityCarousel.addEventListener('pointerup', finishActivityDrag);
     activityCarousel.addEventListener('pointercancel', finishActivityDrag);
 
-    const activityLeadingClones = document.createDocumentFragment();
-    const activityTrailingClones = document.createDocumentFragment();
-    activityCards.forEach((card) => {
-      const leadingClone = card.cloneNode(true);
-      const trailingClone = card.cloneNode(true);
-      leadingClone.classList.add('activity-clone');
-      trailingClone.classList.add('activity-clone');
-      leadingClone.setAttribute('aria-hidden', 'true');
-      trailingClone.setAttribute('aria-hidden', 'true');
-      activityLeadingClones.append(leadingClone);
-      activityTrailingClones.append(trailingClone);
-    });
-    activityTrack.prepend(activityLeadingClones);
-    activityTrack.append(activityTrailingClones);
+    for (let group = 0; group < 3; group += 1) {
+      activityTrack.prepend(createActivityCloneGroup());
+      activityIndex += activityCloneGroupSize;
+      activityTrack.append(createActivityCloneGroup());
+    }
     window.requestAnimationFrame(() => centerActivityCard(false));
     window.addEventListener('load', () => centerActivityCard(false), { once: true });
 
