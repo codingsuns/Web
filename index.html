@@ -241,7 +241,8 @@
     .contact-qr { margin: 0; padding: 24px; border: 1px solid rgba(32,41,35,.15); background: var(--paper); text-align: center; box-shadow: 8px 8px 0 rgba(53,86,75,.1); }
     .contact-qr img { display: block; width: 100%; max-width: 250px; aspect-ratio: 1; margin: 0 auto 16px; object-fit: contain; }
     .contact-qr figcaption { color: #686d62; font-size: 11px; }
-    footer { display: flex; justify-content: space-between; gap: 30px; align-items: center; padding-block: 27px; color: #6d7066; font-size: 10px; }
+    footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center; padding-block: 27px; color: #6d7066; font-size: 10px; }
+    footer > span { grid-column: 2; text-align: center; }
     footer .brand { color: var(--ink); font-size: 16px; }
     footer .brand-mark { width: 30px; height: 30px; flex-basis: 30px; }
     .back-to-top { position: fixed; z-index: 5; right: max(24px, calc((100vw - 1240px) / 2)); bottom: 24px; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(53,86,75,.28); border-radius: 50%; background: rgba(245,242,233,.88); color: var(--moss); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s, background .2s; }
@@ -314,8 +315,8 @@
       .contact { padding-block: 72px; }
       .contact-inner { grid-template-columns: 1fr; gap: 35px; }
       .contact-copy h2 { font-size: 32px; }
-      .contact-qr { width: min(100%, 340px); justify-self: center; }
-      footer { align-items: flex-start; flex-direction: column; gap: 13px; padding-block: 22px; }
+      footer { display: flex; align-items: flex-start; flex-direction: column; gap: 13px; padding-block: 22px; }
+      footer > span { align-self: center; text-align: center; }
     }
     @media (max-width: 360px) {
       .resources-mascot { width: 38px; height: 38px; flex-basis: 38px; }
@@ -332,7 +333,6 @@
       <a href="#activities">함께 만드는 것</a>
       <a href="#resources">학습 자료</a>
       <a href="#schedule">정기 모임</a>
-      <a href="#contact">연락하기</a>
       <a class="nav-album" href="https://photos.app.goo.gl/fWfPwsbekQe6qWLa7" target="_blank" rel="noopener noreferrer" aria-label="코딩썬샤인 포토앨범 새 탭에서 열기" title="코딩썬샤인 포토앨범"><span class="album-icon" aria-hidden="true"><span class="album-icon-page"></span></span></a>
     </nav>
   </header>
@@ -584,7 +584,6 @@
   <footer class="wrap">
     <a class="brand" href="#home" aria-label="코딩썬샤인 홈"><span class="brand-mark" aria-hidden="true"><img src="img/suni-character.png" alt=""></span>코딩썬샤인</a>
     <span>함께 배우고, 직접 만들기. &copy; 2021 코딩썬샤인</span>
-    <a href="#home">맨 위로 ↑</a>
   </footer>
 
   <a class="back-to-top" href="#home" aria-label="페이지 맨 위로 이동">
