@@ -183,7 +183,7 @@
     .schedule-place { margin: 17px 0 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.82); font-size: 11px; line-height: 1.8; }
     .schedule-place strong { display: block; margin-bottom: 3px; color: var(--leaf); font-size: 10px; letter-spacing: .08em; }
     .schedule-next { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.25); }
-    .schedule-next-date { display: block; margin-top: 8px; font-size: 13px; font-weight: 600; }
+    .schedule-next-date { display: block; width: fit-content; margin: 8px auto 0; padding: 8px 11px; border: 1px solid var(--moss); border-radius: 6px; background: var(--sunshine); color: var(--ink); font-size: 15px; font-weight: 700; animation: meetup-date-sway 2.4s ease-in-out infinite alternate; }
     .schedule-main { display: flex; flex-direction: column; justify-content: center; }
     .schedule-main .section-label { margin-bottom: 17px; }
     .schedule-main .section-heading { margin-bottom: 17px; }
@@ -211,12 +211,12 @@
     .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .interest-tags span { padding: 8px 11px; border: 1px solid rgba(53,86,75,.25); border-radius: 2px; background: rgba(255,255,255,.42); color: var(--moss); font-size: 11px; font-weight: 600; }
     .contact-side { min-width: 0; padding-top: 42px; }
-    .contact-tabs { width: 100%; margin-top: 0; }
-    .contact-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid rgba(53,86,75,.35); }
+    .contact-tabs { width: 100%; margin-top: 0; border: 1px solid rgba(53,86,75,.2); border-radius: 12px; background: rgba(255,255,255,.3); }
+    .contact-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; border-bottom: 1px solid rgba(53,86,75,.35); border-radius: 11px 11px 0 0; }
     .contact-tab { position: relative; min-height: 54px; padding: 12px 16px; border: 0; background: transparent; color: #686d62; font: 600 13px var(--sans); cursor: pointer; }
     .contact-tab[aria-selected="true"] { background: var(--moss); color: white; }
     .contact-tab:focus-visible { z-index: 1; outline: 3px solid var(--coral); outline-offset: 3px; }
-    .contact-tab-panel { padding: 16px; border: 1px solid rgba(53,86,75,.2); border-top: 0; background: rgba(255,255,255,.3); }
+    .contact-tab-panel { padding: 16px; border: 0; border-radius: 0 0 11px 11px; background: transparent; }
     .contact-tab-panel[hidden] { display: none; }
     .contact-channel-content { display: block; }
     .contact-chat { display: grid; grid-template-columns: 44px 1fr; gap: 4px 14px; align-items: center; max-width: 480px; padding: 0 0 10px; }
@@ -262,6 +262,7 @@
     .back-to-top svg { width: 17px; height: 17px; }
 
     @keyframes arrive { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes meetup-date-sway { from { transform: translateX(-20px); } to { transform: translateX(20px); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
     @media (max-width: 900px) {
       .contact-inner { grid-template-columns: 1fr; gap: 35px; }
@@ -329,6 +330,7 @@
       .contact-tab { min-height: 52px; padding: 10px 8px; font-size: 11px; }
       .contact-tab-panel { padding: 20px 16px; }
       footer { display: flex; align-items: flex-start; flex-direction: column; gap: 13px; padding-block: 22px; }
+      footer .brand { align-self: center; }
       footer > span { align-self: center; text-align: center; }
     }
     @media (max-width: 360px) {
@@ -523,17 +525,6 @@
           <p class="section-label">CONTACT · SAY HELLO</p>
           <h2 id="contact-title">궁금한 점이 있거나<br>함께하고 싶으신가요?</h2>
           <p>함께 만들고 배우며 서로의 꿈을 나누는 곳,<br>코딩썬샤인에서 여러분의 꿈을 현실로 만들어 봐요.</p>
-          <div class="contact-interests" aria-labelledby="contact-interests-title">
-            <h3 id="contact-interests-title">관심 분야</h3>
-            <div class="interest-tags">
-              <span>#코딩</span>
-              <span>#ROS</span>
-              <span>#파이썬</span>
-              <span>#AIAgent</span>
-              <span>#IOT</span>
-              <span>#3DModeling</span>
-            </div>
-          </div>
         </div>
         <div class="contact-side">
         <div class="contact-tabs">
@@ -587,11 +578,11 @@
                     <h3>함께 지키는 코딩썬샤인 회칙</h3>
                     <p class="contact-bylaws-note">(구글 로그인 필요 · 사내 접속 불가)</p>
                   </div>
-                  <p>서로 존중하며 즐겁고 안전하게 활동할 수 있도록 약속을 확인해 주세요.</p>
+                  <p>서로 존중과 즐겁고 안전한 활동을 위한 약속을 확인</p>
                 </div>
                 <div class="contact-bylaws-actions">
                   <a class="contact-action" href="https://docs.google.com/spreadsheets/d/1COq_oAgVK7euDkdd3zEF3RqH73zsCWSDjSy3rLTWkQY/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="contact-book-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5c3.2-.9 6.1-.4 8.5 1.3v13c-2.4-1.7-5.3-2.2-8.5-1.3v-13ZM20.5 5.5c-3.2-.9-6.1-.4-8.5 1.3v13c2.4-1.7 5.3-2.2 8.5-1.3v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 8.5c1.5-.2 3 .1 4.3.8M6 11.5c1.5-.2 3 .1 4.3.8M18 8.5c-1.5-.2-3 .1-4.3.8M18 11.5c-1.5-.2-3 .1-4.3.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>코딩썬샤인 회칙</span><span aria-hidden="true">↗</span></a>
-                  <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI에게 물어보기</span><span aria-hidden="true">↗</span></a>
+                  <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI 물어보기</span><span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </section>
