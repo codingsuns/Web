@@ -103,20 +103,20 @@
     .manifesto h2 { margin-bottom: 20px; font: 400 clamp(32px, 4vw, 52px)/1.5 var(--serif); }
     .manifesto p { margin: 0; color: rgba(255,255,255,.8); font-size: 13px; line-height: 1.9; }
 
-    .activities { padding-block: 116px 120px; }
+    .activities { padding-block: 116px 64px; }
     .section-top { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 46px; }
     .section-top .section-label { margin-bottom: 17px; }
     .section-heading { margin-bottom: 0; }
     .resources-heading { display: flex; align-items: center; gap: 12px; }
     .resources-mascot { display: block; width: 64px; height: 64px; flex: 0 0 64px; object-fit: contain; }
     .section-aside { max-width: 270px; margin: 0 0 5px; color: #6b6d64; font-size: 12px; line-height: 1.8; }
-    .activity-carousel { overflow: hidden; padding: 24px 0; touch-action: pan-y; cursor: grab; }
+    .activity-carousel { overflow: hidden; padding: 24px 0 20px; touch-action: pan-y; cursor: grab; }
     .activity-grid { display: flex; width: max-content; gap: 18px; transition: transform .7s cubic-bezier(.22,.68,0,1); }
     .activity-grid:not(.is-moving) { transition: none; }
     .activity-carousel.is-dragging { cursor: grabbing; user-select: none; }
     .activity-carousel.is-dragging .activity-grid { transition: none; }
     .activity { position: relative; flex: 0 0 clamp(280px, 29vw, 350px); min-height: 280px; padding: 28px 27px 32px; border: 1px solid rgba(32,41,35,.12); background: rgba(255,255,255,.56); box-shadow: 0 8px 22px rgba(32,41,35,.045); opacity: .5; filter: blur(2px) brightness(.82); transform: scale(.94); transition: opacity .6s ease, filter .6s ease, transform .6s ease, box-shadow .6s ease, background .6s ease; }
-    .activity.is-active { z-index: 1; background: var(--paper); box-shadow: 0 18px 42px rgba(32,41,35,.16); opacity: 1; filter: none; transform: scale(1.02); }
+    .activity.is-active { z-index: 1; background: var(--paper); box-shadow: 0 4px 12px rgba(32,41,35,.25); opacity: 1; filter: none; transform: scale(1.02); }
     .activity-clone { pointer-events: none; }
     .activity-photo { position: relative; width: 100%; aspect-ratio: 1.25 / 1; margin: 0 0 20px; overflow: hidden; background: #dce2d8; }
     .activity-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -202,7 +202,7 @@
     .join-content p strong { color: var(--sunshine); font-weight: 600; }
     .join-content .button-link { width: fit-content; }
     .contact { padding-block: 100px; background: #e8e7dc; }
-    .contact-inner { display: grid; grid-template-columns: 1fr 340px; gap: 70px; align-items: center; }
+    .contact-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
     .contact-copy .section-label { margin-bottom: 17px; }
     .contact-copy h2 { margin-bottom: 16px; font: 400 39px/1.45 var(--serif); }
     .contact-copy > p { max-width: 480px; margin-bottom: 28px; color: #686d62; font-size: 13px; line-height: 1.9; }
@@ -210,7 +210,16 @@
     .contact-interests h3 { margin-bottom: 12px; color: #686d62; font-size: 11px; font-weight: 600; }
     .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .interest-tags span { padding: 8px 11px; border: 1px solid rgba(53,86,75,.25); border-radius: 2px; background: rgba(255,255,255,.42); color: var(--moss); font-size: 11px; font-weight: 600; }
-    .contact-chat { display: grid; grid-template-columns: 44px 1fr; gap: 4px 14px; align-items: center; max-width: 480px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .contact-side { min-width: 0; padding-top: 42px; }
+    .contact-tabs { width: 100%; margin-top: 0; }
+    .contact-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid rgba(53,86,75,.35); }
+    .contact-tab { position: relative; min-height: 54px; padding: 12px 16px; border: 0; background: transparent; color: #686d62; font: 600 13px var(--sans); cursor: pointer; }
+    .contact-tab[aria-selected="true"] { background: var(--moss); color: white; }
+    .contact-tab:focus-visible { z-index: 1; outline: 3px solid var(--coral); outline-offset: 3px; }
+    .contact-tab-panel { padding: 16px; border: 1px solid rgba(53,86,75,.2); border-top: 0; background: rgba(255,255,255,.3); }
+    .contact-tab-panel[hidden] { display: none; }
+    .contact-channel-content { display: block; }
+    .contact-chat { display: grid; grid-template-columns: 44px 1fr; gap: 4px 14px; align-items: center; max-width: 480px; padding: 0 0 10px; }
     .contact-chat-icon { display: grid; width: 44px; height: 44px; grid-row: span 2; place-items: center; border-radius: 50%; background: var(--leaf); color: var(--moss); font-size: 21px; }
     .contact-chat strong { font: 400 18px var(--serif); }
     .contact-chat span:last-child { color: #686d62; font-size: 12px; }
@@ -222,7 +231,7 @@
     .contact-social-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 480px; }
     .contact-social-actions .contact-action { width: 100%; min-height: 48px; margin-top: 9px; padding: 10px 12px; gap: 8px; font-size: 11px; }
     .contact-social-actions .contact-action > span { margin-left: auto; }
-    .contact-bylaws { max-width: 480px; margin-top: 25px; padding-top: 21px; border-top: 1px solid var(--line); }
+    .contact-bylaws { max-width: 100%; margin: 0; }
     .contact-bylaws-intro { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 14px; align-items: start; margin-bottom: 12px; }
     .contact-bylaws-heading { margin: 0; }
     .contact-bylaws-icon { display: grid; width: 44px; height: 44px; grid-column: 1; grid-row: 1 / span 2; align-self: start; place-items: center; border-radius: 50%; background: linear-gradient(145deg, #d5e87c 4%, var(--leaf) 58%, #a8c44e 100%); color: var(--moss); }
@@ -242,9 +251,6 @@
     .contact-webtoon[hidden] { display: none; }
     .contact-webtoon img { display: block; width: 100%; height: auto; border: 1px solid rgba(32,41,35,.15); }
     .contact-webtoon figcaption { margin-top: 7px; color: #686d62; font-size: 10px; text-align: center; }
-    .contact-qr { margin: 0; padding: 24px; border: 1px solid rgba(32,41,35,.15); background: var(--paper); text-align: center; box-shadow: 8px 8px 0 rgba(53,86,75,.1); }
-    .contact-qr img { display: block; width: 100%; max-width: 250px; aspect-ratio: 1; margin: 0 auto 16px; object-fit: contain; }
-    .contact-qr figcaption { color: #686d62; font-size: 11px; }
     footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center; padding-block: 27px; color: #6d7066; font-size: 10px; }
     footer > span { grid-column: 2; text-align: center; }
     footer .brand { color: var(--ink); font-size: 16px; }
@@ -257,6 +263,10 @@
 
     @keyframes arrive { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 35px; }
+      .contact-side { padding-top: 0; }
+    }
     @media (max-width: 760px) {
       .wrap { width: calc(100% - 42px); }
       .topbar { padding: 18px 21px; }
@@ -288,7 +298,7 @@
       .resources-heading { gap: 9px; }
       .intro-copy { padding-top: 8px; }
       .manifesto { min-height: 390px; }
-      .activities { padding-block: 76px 80px; }
+      .activities { padding-block: 76px 44px; }
       .section-top { display: block; margin-bottom: 28px; }
       .section-aside { margin-top: 17px; }
       .activity-grid { gap: 14px; }
@@ -315,8 +325,9 @@
       .join-content { padding: 54px 25px 60px; }
       .join-content h2 { font-size: 34px; }
       .contact { padding-block: 72px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 35px; }
       .contact-copy h2 { font-size: 32px; }
+      .contact-tab { min-height: 52px; padding: 10px 8px; font-size: 11px; }
+      .contact-tab-panel { padding: 20px 16px; }
       footer { display: flex; align-items: flex-start; flex-direction: column; gap: 13px; padding-block: 22px; }
       footer > span { align-self: center; text-align: center; }
     }
@@ -523,64 +534,76 @@
               <span>#3DModeling</span>
             </div>
           </div>
-          <div class="contact-chat">
-            <span class="contact-chat-icon" aria-hidden="true">💬</span>
-            <strong>코딩썬샤인 소통 채널</strong>
-            <span>오픈톡에서 "코딩썬샤인" 접속 가능합니다!</span>
-          </div>
-          <div class="contact-social-actions">
-            <a class="contact-action" href="https://open.kakao.com/o/gXCcDKZc" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FEE500" d="M12 2.5c-5.4 0-9.8 3.5-9.8 7.8 0 2.8 1.9 5.3 4.8 6.7l-1 4.2c-.1.5.4.8.8.5l4.9-3.1h.3c5.4 0 9.8-3.5 9.8-7.8S17.4 2.5 12 2.5Z"/><circle cx="8" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="12" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="16" cy="10.3" r="1" fill="#3C1E1E"/></svg><span>카카오톡 오픈톡</span><span aria-hidden="true">↗</span></a>
-            <a class="contact-action" href="https://www.instagram.com/co_shine_gw/" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="instagram-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD776"/><stop offset=".5" stop-color="#F56040"/><stop offset="1" stop-color="#C13584"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#instagram-gradient)"/><rect x="6" y="6" width="12" height="12" rx="3.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17" cy="7.3" r="1.1" fill="white"/></svg><span>인스타그램 채널</span><span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="contact-bylaws">
-            <div class="contact-bylaws-intro">
-              <span class="contact-bylaws-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <defs>
-                    <linearGradient id="bylaws-people-shine" x1="5" y1="3" x2="18" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#567d53"/>
-                      <stop offset=".52" stop-color="#35564b"/>
-                      <stop offset="1" stop-color="#263f37"/>
-                    </linearGradient>
-                  </defs>
-                  <g fill="#263f37" opacity=".2" transform="translate(0 .45)">
-                    <circle cx="12" cy="6.5" r="3.2"/>
-                    <circle cx="4.8" cy="8" r="2.5"/>
-                    <circle cx="19.2" cy="8" r="2.5"/>
-                    <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
-                  </g>
-                  <g fill="url(#bylaws-people-shine)">
-                    <circle cx="12" cy="6.5" r="3.2"/>
-                    <circle cx="4.8" cy="8" r="2.5"/>
-                    <circle cx="19.2" cy="8" r="2.5"/>
-                    <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
-                  </g>
-                  <path d="M9.1 4.4a3.1 3.1 0 0 1 3-1.1" stroke="white" stroke-opacity=".55" stroke-width=".7" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <div class="contact-bylaws-heading">
-                <h3>함께 지키는 코딩썬샤인 회칙</h3>
-                <p class="contact-bylaws-note">(구글 로그인 필요 · 사내 접속 불가)</p>
-              </div>
-              <p>서로 존중하며 즐겁고 안전하게 활동할 수 있도록 약속을 확인해 주세요.</p>
-            </div>
-            <div class="contact-bylaws-actions">
-              <a class="contact-action" href="https://docs.google.com/spreadsheets/d/1COq_oAgVK7euDkdd3zEF3RqH73zsCWSDjSy3rLTWkQY/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="contact-book-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5c3.2-.9 6.1-.4 8.5 1.3v13c-2.4-1.7-5.3-2.2-8.5-1.3v-13ZM20.5 5.5c-3.2-.9-6.1-.4-8.5 1.3v13c2.4-1.7 5.3-2.2 8.5-1.3v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 8.5c1.5-.2 3 .1 4.3.8M6 11.5c1.5-.2 3 .1 4.3.8M18 8.5c-1.5-.2-3 .1-4.3.8M18 11.5c-1.5-.2-3 .1-4.3.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>코딩썬샤인 회칙</span><span aria-hidden="true">↗</span></a>
-              <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI에게 물어보기</span><span aria-hidden="true">↗</span></a>
-            </div>
-            <button class="contact-webtoon-toggle" type="button" aria-expanded="false" aria-controls="bylaws-webtoon">
-              <span>회칙 6컷 만화 보기</span><span aria-hidden="true">＋</span>
-            </button>
-            <figure class="contact-webtoon" id="bylaws-webtoon" hidden>
-              <img src="img/Webtoon.png" alt="코딩썬샤인 동호회 회칙을 설명하는 6컷 만화">
-              <figcaption>그림으로 보는 코딩썬샤인 회칙<br>(정회원은 월회비만 있으며, 정기 모임 참석비는 없습니다.)</figcaption>
-            </figure>
-          </div>
         </div>
-        <figure class="contact-qr">
-          <img src="img/kakao_qr.png" alt="카카오톡 코딩썬샤인 오픈채팅 참여 QR 코드" loading="lazy">
-          <figcaption>카메라로 스캔해 오픈채팅에 참여하세요.</figcaption>
-        </figure>
+        <div class="contact-side">
+        <div class="contact-tabs">
+            <div class="contact-tab-list" role="tablist" aria-label="코딩썬샤인 안내">
+              <button class="contact-tab" id="contact-tab-channels" type="button" role="tab" aria-selected="true" aria-controls="contact-panel-channels" tabindex="0">코딩썬샤인 소통채널</button>
+              <button class="contact-tab" id="contact-tab-bylaws" type="button" role="tab" aria-selected="false" aria-controls="contact-panel-bylaws" tabindex="-1">함께 지키는 코딩썬샤인 회칙</button>
+            </div>
+            <section class="contact-tab-panel" id="contact-panel-channels" role="tabpanel" aria-labelledby="contact-tab-channels" tabindex="0">
+              <div class="contact-channel-content">
+                <div>
+                  <div class="contact-chat">
+                    <span class="contact-chat-icon" aria-hidden="true">💬</span>
+                    <strong>코딩썬샤인 소통 채널</strong>
+                    <span>오픈톡에서 "코딩썬샤인" 접속 가능합니다!</span>
+                  </div>
+                  <div class="contact-social-actions">
+                    <a class="contact-action" href="https://open.kakao.com/o/gXCcDKZc" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FEE500" d="M12 2.5c-5.4 0-9.8 3.5-9.8 7.8 0 2.8 1.9 5.3 4.8 6.7l-1 4.2c-.1.5.4.8.8.5l4.9-3.1h.3c5.4 0 9.8-3.5 9.8-7.8S17.4 2.5 12 2.5Z"/><circle cx="8" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="12" cy="10.3" r="1" fill="#3C1E1E"/><circle cx="16" cy="10.3" r="1" fill="#3C1E1E"/></svg><span>카카오톡 오픈톡</span><span aria-hidden="true">↗</span></a>
+                    <a class="contact-action" href="https://www.instagram.com/co_shine_gw/" target="_blank" rel="noopener noreferrer"><svg class="contact-social-icon" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="instagram-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD776"/><stop offset=".5" stop-color="#F56040"/><stop offset="1" stop-color="#C13584"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#instagram-gradient)"/><rect x="6" y="6" width="12" height="12" rx="3.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17" cy="7.3" r="1.1" fill="white"/></svg><span>인스타그램 채널</span><span aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="contact-tab-panel" id="contact-panel-bylaws" role="tabpanel" aria-labelledby="contact-tab-bylaws" tabindex="0" hidden>
+              <div class="contact-bylaws">
+                <div class="contact-bylaws-intro">
+                  <span class="contact-bylaws-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <defs>
+                        <linearGradient id="bylaws-people-shine" x1="5" y1="3" x2="18" y2="21" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#567d53"/>
+                          <stop offset=".52" stop-color="#35564b"/>
+                          <stop offset="1" stop-color="#263f37"/>
+                        </linearGradient>
+                      </defs>
+                      <g fill="#263f37" opacity=".2" transform="translate(0 .45)">
+                        <circle cx="12" cy="6.5" r="3.2"/>
+                        <circle cx="4.8" cy="8" r="2.5"/>
+                        <circle cx="19.2" cy="8" r="2.5"/>
+                        <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
+                      </g>
+                      <g fill="url(#bylaws-people-shine)">
+                        <circle cx="12" cy="6.5" r="3.2"/>
+                        <circle cx="4.8" cy="8" r="2.5"/>
+                        <circle cx="19.2" cy="8" r="2.5"/>
+                        <path d="M6.1 18.4c0-4 2.6-7 5.9-7s5.9 3 5.9 7c0 1.4-2.6 2.2-5.9 2.2s-5.9-.8-5.9-2.2ZM.8 16.3c0-3.1 1.7-5.4 4-5.4 1 0 1.8.4 2.5 1.2-1.2 1.5-1.9 3.5-1.9 5.8-2.6 0-4.6-.6-4.6-1.6ZM16.7 12.1c.7-.8 1.5-1.2 2.5-1.2 2.3 0 4 2.3 4 5.4 0 1-2 1.6-4.6 1.6 0-2.3-.7-4.3-1.9-5.8Z"/>
+                      </g>
+                      <path d="M9.1 4.4a3.1 3.1 0 0 1 3-1.1" stroke="white" stroke-opacity=".55" stroke-width=".7" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div class="contact-bylaws-heading">
+                    <h3>함께 지키는 코딩썬샤인 회칙</h3>
+                    <p class="contact-bylaws-note">(구글 로그인 필요 · 사내 접속 불가)</p>
+                  </div>
+                  <p>서로 존중하며 즐겁고 안전하게 활동할 수 있도록 약속을 확인해 주세요.</p>
+                </div>
+                <div class="contact-bylaws-actions">
+                  <a class="contact-action" href="https://docs.google.com/spreadsheets/d/1COq_oAgVK7euDkdd3zEF3RqH73zsCWSDjSy3rLTWkQY/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="contact-book-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 5.5c3.2-.9 6.1-.4 8.5 1.3v13c-2.4-1.7-5.3-2.2-8.5-1.3v-13ZM20.5 5.5c-3.2-.9-6.1-.4-8.5 1.3v13c2.4-1.7 5.3-2.2 8.5-1.3v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 8.5c1.5-.2 3 .1 4.3.8M6 11.5c1.5-.2 3 .1 4.3.8M18 8.5c-1.5-.2-3 .1-4.3.8M18 11.5c-1.5-.2-3 .1-4.3.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>코딩썬샤인 회칙</span><span aria-hidden="true">↗</span></a>
+                  <a class="contact-action" href="https://notebook.google.com/notebook/0d35cc85-d74f-4a8f-990c-4ca53e688e5f" target="_blank" rel="noopener noreferrer"><svg class="contact-robot-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2.5M5.5 9h13v9.5h-13V9Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="7" width="17" height="13.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12.5" r="1.2" fill="currentColor"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor"/><path d="M9 16h6M2 11v5M22 11v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>회칙 AI에게 물어보기</span><span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </section>
+          </div>
+          <button class="contact-webtoon-toggle" type="button" aria-expanded="false" aria-controls="bylaws-webtoon">
+            <span>회칙 6컷 만화 보기</span><span aria-hidden="true">＋</span>
+          </button>
+          <figure class="contact-webtoon" id="bylaws-webtoon" hidden>
+            <img src="img/Webtoon.png" alt="코딩썬샤인 동호회 회칙을 설명하는 6컷 만화">
+            <figcaption>그림으로 보는 코딩썬샤인 회칙<br>(정회원은 월회비만 있으며, 정기 모임 참석비는 없습니다.)</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   </main>
@@ -597,6 +620,34 @@
   </a>
 
   <script>
+    const contactTabs = Array.from(document.querySelectorAll('.contact-tab'));
+
+    function activateContactTab(tab, moveFocus = false) {
+      contactTabs.forEach((item) => {
+        const isSelected = item === tab;
+        item.setAttribute('aria-selected', String(isSelected));
+        item.tabIndex = isSelected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !isSelected;
+      });
+
+      if (moveFocus) tab.focus();
+    }
+
+    contactTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateContactTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % contactTabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + contactTabs.length) % contactTabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = contactTabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        activateContactTab(contactTabs[nextIndex], true);
+      });
+    });
+
     const webtoonToggle = document.querySelector('.contact-webtoon-toggle');
     const webtoon = document.querySelector('#bylaws-webtoon');
 
@@ -693,7 +744,7 @@
         activityTimer = window.setInterval(() => {
           activityIndex += 1;
           centerActivityCard();
-        }, 5000);
+        }, 4000);
       }
     }
 
