@@ -110,7 +110,7 @@
     .resources-heading { display: flex; align-items: center; gap: 12px; }
     .resources-mascot { display: block; width: 64px; height: 64px; flex: 0 0 64px; object-fit: contain; }
     .section-aside { max-width: 270px; margin: 0 0 5px; color: #6b6d64; font-size: 12px; line-height: 1.8; }
-    .activity-carousel { overflow: hidden; padding: 24px 0 20px; touch-action: pan-y; cursor: grab; }
+    .activity-carousel { width: 100%; overflow: hidden; padding: 24px 0 20px; touch-action: pan-y; cursor: grab; }
     .activity-grid { display: flex; width: max-content; gap: 18px; transition: transform .7s cubic-bezier(.22,.68,0,1); }
     .activity-grid:not(.is-moving) { transition: none; }
     .activity-carousel.is-dragging { cursor: grabbing; user-select: none; }
@@ -210,7 +210,7 @@
     .contact-interests h3 { margin-bottom: 12px; color: #686d62; font-size: 11px; font-weight: 600; }
     .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .interest-tags span { padding: 8px 11px; border: 1px solid rgba(53,86,75,.25); border-radius: 2px; background: rgba(255,255,255,.42); color: var(--moss); font-size: 11px; font-weight: 600; }
-    .contact-side { min-width: 0; padding-top: 42px; }
+    .contact-side { min-width: 0; padding-top: 0; }
     .contact-tabs { width: 100%; margin-top: 0; border: 1px solid rgba(53,86,75,.2); border-radius: 12px; background: rgba(255,255,255,.3); }
     .contact-tab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; border-bottom: 1px solid rgba(53,86,75,.35); border-radius: 11px 11px 0 0; }
     .contact-tab { position: relative; min-height: 54px; padding: 12px 16px; border: 0; background: transparent; color: #686d62; font: 600 13px var(--sans); cursor: pointer; }
@@ -228,9 +228,9 @@
     .contact-robot-icon { width: 17px; height: 17px; flex: 0 0 17px; }
     .contact-action:hover { transform: translateY(-2px); background: var(--ink); }
     .contact-action:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
-    .contact-social-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 480px; }
+    .contact-social-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .contact-social-actions .contact-action { width: 100%; min-height: 48px; margin-top: 9px; padding: 10px 12px; gap: 8px; font-size: 11px; }
-    .contact-social-actions .contact-action > span { margin-left: auto; }
+    .contact-social-actions .contact-action > span:first-of-type { flex: 1; min-width: 0; }
     .contact-bylaws { max-width: 100%; margin: 0; }
     .contact-bylaws-intro { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 14px; align-items: start; margin-bottom: 12px; }
     .contact-bylaws-heading { margin: 0; }
@@ -302,6 +302,7 @@
       .activities { padding-block: 76px 44px; }
       .section-top { display: block; margin-bottom: 28px; }
       .section-aside { margin-top: 17px; }
+      .activity-carousel { width: calc(100% - 42px); margin-inline: auto; }
       .activity-grid { gap: 14px; }
       .activity { flex-basis: calc(100vw - 96px); min-height: 0; padding: 23px 20px 27px; }
       .activity-photo { aspect-ratio: 1.34 / 1; margin-bottom: 17px; }
@@ -392,8 +393,8 @@
       </div>
     </section>
 
-    <section class="activities wrap" id="activities">
-      <div class="section-top">
+    <section class="activities" id="activities">
+      <div class="section-top wrap">
         <div>
           <p class="section-label">02 / WHAT WE MAKE</p>
           <h2 class="section-heading">배우고, 만들고, 나누기</h2>
